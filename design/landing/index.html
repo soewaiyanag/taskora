@@ -71,6 +71,9 @@ kbd{font:500 11px/1 var(--f-mono);font-stretch:87.5%;padding:3px 6px;border-radi
 .btn-lg{height:50px;padding:0 20px 0 22px;border-radius:10px;font-size:16px}
 .btn-lg svg{transition:transform 220ms var(--ease)}
 .btn-lg:hover svg{transform:translateX(3px)}
+/* magnetic: the page's one action leans toward a mouse pointer (JS sets `translate`), then settles home with the overshoot */
+.btn-lg{transition:background-color 200ms ease,transform 200ms var(--ease),translate 320ms var(--ease)}
+.btn-lg:hover{transition:background-color 200ms ease,transform 200ms var(--ease),translate 160ms var(--ease-out)}
 .btn-paper{background:var(--shell-fg);color:var(--shell)}
 .btn-paper:hover{background:#ffffff}
 
@@ -78,6 +81,14 @@ kbd{font:500 11px/1 var(--f-mono);font-stretch:87.5%;padding:3px 6px;border-radi
 .hero{padding-top:44px}
 h1{font:640 clamp(40px,5vw,74px)/1.04 var(--f-display);font-stretch:var(--wide);letter-spacing:-.022em;text-wrap:balance;max-width:24ch}
 h1 .line{display:inline-block;text-wrap:balance}
+/* The headline acts out its sentence: line one is set down like a card I moved (settle); line two arrives like a teammate's move (flat 600ms glide, no bounce). */
+@media (prefers-reduced-motion: no-preference){
+  html{scroll-behavior:smooth}
+  h1 .line:first-child{transform-origin:0 100%;animation:set-down 520ms var(--ease) both}
+  h1 .line:last-child{animation:glide-in 600ms 340ms cubic-bezier(.45,0,.2,1) both}
+  @keyframes set-down{from{transform:translateY(-12px) rotate(-1.5deg) scale(1.03)}}
+  @keyframes glide-in{from{opacity:0;transform:translateX(-40px)}}
+}
 .hero-row{display:grid;justify-items:start;gap:28px;margin-top:22px}
 .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px}
 .hero-cta small{flex-basis:100%;font-size:13.5px;color:var(--fg-2)}
@@ -273,6 +284,11 @@ h2{font:640 clamp(32px,3.6vw,50px)/1.08 var(--f-display);font-stretch:var(--wide
 .close{margin-top:150px;background:var(--shell);color:var(--shell-fg)}
 .close .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-block:96px}
 .close h2{max-width:14ch}
+/* The wall ends and the room begins: the band opens from a panel to full bleed as it scrolls in. Scroll-linked, CSS only; without support it is simply full bleed. */
+@supports (animation-timeline:view()){@media (prefers-reduced-motion: no-preference){
+  .close{animation:band-open linear both;animation-timeline:view();animation-range:entry 0% entry 100%}
+  @keyframes band-open{from{clip-path:inset(0 var(--gutter) round 14px 14px 0 0)}to{clip-path:inset(0 round 0)}}
+}}
 .close p{margin-top:14px;max-width:44ch;font-size:18px;color:var(--shell-mut)}
 .close .cta-main small{color:var(--shell-mut)}
 .close a.gh2{color:var(--shell-fg);font-size:15px;font-weight:500;text-decoration-color:var(--shell-line)}
@@ -335,7 +351,7 @@ footer a{color:var(--shell-fg);text-decoration-color:var(--shell-line)}
 
 <main id="top">
   <section class="wrap hero" aria-labelledby="hero-title">
-    <h1 id="hero-title">Move a card.<br><span class="line">Your team sees it at once.</span></h1>
+    <h1 id="hero-title"><span class="line">Move a card.</span><br><span class="line">Your team sees it at once.</span></h1>
     <div class="hero-row">
       <p class="lede">Taskora is a calm task board for small teams. Every move is instant, and everyone on the board sees it live.</p>
       <div class="hero-cta">
@@ -841,6 +857,22 @@ builtPause.addEventListener('click', () => {
 });
 if (reduce) { relayFinal(true); builtPause.hidden = true; }
 else { traceLoop(); relayLoop(); }
+
+/* ---------- magnetic primary action ---------- */
+// Leans up to `reach` px toward a mouse pointer; CSS eases the follow and the settle home.
+// Returns its cleanup, so the React port is `useEffect(() => magnetic(ref.current), [])`.
+function magnetic(el, reach = 6) {
+  const ac = new AbortController();
+  el.addEventListener('pointermove', e => {
+    if (e.pointerType !== 'mouse') return; // touch and pen keep the button still
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width * 2 - 1, y = (e.clientY - r.top) / r.height * 2 - 1;
+    el.style.translate = `${x * reach}px ${y * reach * .6}px`;
+  }, { signal: ac.signal });
+  el.addEventListener('pointerleave', () => { el.style.translate = ''; }, { signal: ac.signal });
+  return () => ac.abort();
+}
+if (!reduce) $$('.btn-lg').forEach(el => magnetic(el));
 
 })();
 </script>
