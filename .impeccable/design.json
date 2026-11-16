@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T12:00:00Z",
+  "title": "Design System: Taskora",
+  "extensions": {
+    "colorMeta": {
+      "ramp-0": {
+        "role": "neutral",
+        "displayName": "Stone ramp",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#1a1e1b",
+          "#353a35",
+          "#555b54",
+          "#646a63",
+          "#8e948d",
+          "#b1b6b0",
+          "#cfd2cd",
+          "#e0e2de",
+          "#ecedea",
+          "#f6f7f5",
+          "#ffffff"
+        ]
+      },
+      "wall": {
+        "role": "neutral",
+        "displayName": "Stone Wall",
+        "canonical": "#ecedea",
+        "tonalRamp": [
+          "#1a1e1b",
+          "#353a35",
+          "#555b54",
+          "#8e948d",
+          "#cfd2cd",
+          "#e0e2de",
+          "#ecedea",
+          "#f6f7f5"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Paper",
+        "canonical": "#ffffff"
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Paper Shade",
+        "canonical": "#f6f7f5"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#e0e2de"
+      },
+      "line-2": {
+        "role": "neutral",
+        "displayName": "Rule",
+        "canonical": "#cfd2cd"
+      },
+      "fg": {
+        "role": "neutral",
+        "displayName": "Ink Black",
+        "canonical": "#1a1e1b"
+      },
+      "fg-2": {
+        "role": "neutral",
+        "displayName": "Pencil",
+        "canonical": "#555b54"
+      },
+      "fg-3": {
+        "role": "neutral",
+        "displayName": "Faint Pencil",
+        "canonical": "#646a63"
+      },
+      "shell": {
+        "role": "neutral",
+        "displayName": "Graphite Shell",
+        "canonical": "oklch(23.7% 0.009 159)",
+        "tonalRamp": [
+          "oklch(15% 0.004 159)",
+          "oklch(25% 0.005 159)",
+          "oklch(35% 0.007 159)",
+          "oklch(45% 0.008 159)",
+          "oklch(58% 0.009 159)",
+          "oklch(70% 0.007 159)",
+          "oklch(82% 0.006 159)",
+          "oklch(95% 0.004 159)"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Graphite Ink",
+        "canonical": "#1a1e1b"
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Brick",
+        "canonical": "oklch(53.4% 0.155 32)",
+        "tonalRamp": [
+          "oklch(15% 0.065 32)",
+          "oklch(25% 0.087 32)",
+          "oklch(35% 0.110 32)",
+          "oklch(45% 0.132 32)",
+          "oklch(58% 0.148 32)",
+          "oklch(70% 0.121 32)",
+          "oklch(82% 0.094 32)",
+          "oklch(95% 0.065 32)"
+        ]
+      },
+      "ink-ochre": {
+        "role": "secondary",
+        "displayName": "Ochre (owner ink 1)",
+        "canonical": "oklch(65.4% 0.120 78)",
+        "tonalRamp": [
+          "oklch(15% 0.050 78)",
+          "oklch(25% 0.068 78)",
+          "oklch(35% 0.085 78)",
+          "oklch(45% 0.103 78)",
+          "oklch(58% 0.115 78)",
+          "oklch(70% 0.094 78)",
+          "oklch(82% 0.073 78)",
+          "oklch(95% 0.050 78)"
+        ]
+      },
+      "ink-harbour": {
+        "role": "secondary",
+        "displayName": "Harbour Blue (owner ink 2)",
+        "canonical": "oklch(51.1% 0.073 251)",
+        "tonalRamp": [
+          "oklch(15% 0.031 251)",
+          "oklch(25% 0.041 251)",
+          "oklch(35% 0.052 251)",
+          "oklch(45% 0.062 251)",
+          "oklch(58% 0.070 251)",
+          "oklch(70% 0.057 251)",
+          "oklch(82% 0.044 251)",
+          "oklch(95% 0.031 251)"
+        ]
+      },
+      "ink-rosewood": {
+        "role": "secondary",
+        "displayName": "Rosewood (owner ink 3)",
+        "canonical": "oklch(53.9% 0.111 11)",
+        "tonalRamp": [
+          "oklch(15% 0.047 11)",
+          "oklch(25% 0.063 11)",
+          "oklch(35% 0.079 11)",
+          "oklch(45% 0.095 11)",
+          "oklch(58% 0.107 11)",
+          "oklch(70% 0.087 11)",
+          "oklch(82% 0.068 11)",
+          "oklch(95% 0.047 11)"
+        ]
+      },
+      "ink-sage": {
+        "role": "secondary",
+        "displayName": "Sage (owner ink 4)",
+        "canonical": "oklch(58.9% 0.085 142)",
+        "tonalRamp": [
+          "oklch(15% 0.035 142)",
+          "oklch(25% 0.048 142)",
+          "oklch(35% 0.060 142)",
+          "oklch(45% 0.072 142)",
+          "oklch(58% 0.081 142)",
+          "oklch(70% 0.066 142)",
+          "oklch(82% 0.051 142)",
+          "oklch(95% 0.035 142)"
+        ]
+      },
+      "ink-teal": {
+        "role": "secondary",
+        "displayName": "Teal (owner ink 5)",
+        "canonical": "oklch(56.9% 0.073 189)",
+        "tonalRamp": [
+          "oklch(15% 0.031 189)",
+          "oklch(25% 0.041 189)",
+          "oklch(35% 0.052 189)",
+          "oklch(45% 0.063 189)",
+          "oklch(58% 0.070 189)",
+          "oklch(70% 0.057 189)",
+          "oklch(82% 0.044 189)",
+          "oklch(95% 0.031 189)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display (wide)",
+        "purpose": "The current list's title in the app (28px under 880px); marketing hero at clamp(40px, 5vw, 74px)."
+      },
+      "headline": {
+        "displayName": "Headline (wide)",
+        "purpose": "The open task's title in the drawer only."
+      },
+      "title": {
+        "displayName": "Card Title",
+        "purpose": "Card titles and the composer input."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Base UI text, checklist items, comments."
+      },
+      "body-long": {
+        "displayName": "Body Long",
+        "purpose": "Task descriptions, max 62ch."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Lane names and drawer section headings; buttons and nav at weight 500."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "Card footers, dates and counts, tabular figures."
+      },
+      "code": {
+        "displayName": "Task Code (mono)",
+        "purpose": "Task codes such as WEB-142 in Martian Mono at its 87.5 width; kbd keys at 10px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card",
+        "value": "0 1px 2px rgba(26,30,27,.06), 0 4px 12px -6px rgba(26,30,27,.14)",
+        "dark": "0 1px 2px rgba(0,0,0,.4), 0 4px 12px -6px rgba(0,0,0,.5)",
+        "purpose": "Every resting card and the people key."
+      },
+      {
+        "name": "lift",
+        "value": "0 2px 4px rgba(26,30,27,.06), 0 16px 32px -14px rgba(26,30,27,.30)",
+        "dark": "0 2px 4px rgba(0,0,0,.4), 0 16px 32px -14px rgba(0,0,0,.7)",
+        "purpose": "Card hover and drag, the composer."
+      },
+      {
+        "name": "drawer",
+        "value": "-1px 0 0 var(--line), -32px 0 64px -32px rgba(26,30,27,.28)",
+        "dark": "-1px 0 0 var(--line), -32px 0 64px -32px rgba(0,0,0,.7)",
+        "purpose": "The task drawer's left edge."
+      },
+      {
+        "name": "palette",
+        "value": "0 0 0 1px var(--line), 0 40px 90px -30px rgba(0,0,0,.45)",
+        "purpose": "Command palette panel (raw value in the build, not yet a token)."
+      },
+      {
+        "name": "toast",
+        "value": "0 18px 40px -16px rgba(0,0,0,.45)",
+        "purpose": "Toast chip (raw value in the build, not yet a token)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-base",
+        "value": "220ms",
+        "purpose": "The one motion constant for state changes."
+      },
+      {
+        "name": "ease-settle",
+        "value": "cubic-bezier(.34,1.32,.64,1)",
+        "purpose": "Slight overshoot for things that settle: my own card drop (320ms), people, palette pop, new-card arrival (520ms), tour ticks."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Sheets that slide and things that land: drawer 340ms, mobile sidebar 300ms, Done sink 560ms, check draw 380ms."
+      },
+      {
+        "name": "ease-carry",
+        "value": "cubic-bezier(.45,0,.2,1)",
+        "purpose": "A teammate's move: a flat 600ms glide with no lean and no overshoot, so it reads as someone else's action."
+      },
+      {
+        "name": "drag-lift",
+        "value": "scale(1.03), lean up to 5deg",
+        "purpose": "The card under my pointer while dragging; the lean follows horizontal speed."
+      },
+      {
+        "name": "remote-hold",
+        "value": "1800ms, fade 300ms",
+        "purpose": "How long a teammate's ink outline and name tag stay on a moved card."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "1ms",
+        "purpose": "All transitions and animations collapse under prefers-reduced-motion; the drag lean and remote glide are dropped, the remote outline still shows."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "880px",
+        "purpose": "Below: off-canvas sidebar, 84vw snapping lanes, 28px title."
+      },
+      {
+        "name": "coarse-pointer",
+        "value": "(pointer: coarse)",
+        "purpose": "People-key gap 14px with 44px hit areas."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Flagged T Lockup",
+      "kind": "custom",
+      "refersTo": "mark",
+      "description": "The Taskora mark beside the lowercase wordmark; in the app the flag takes the signed-in person's ink.",
+      "html": "<span class=\"ds-lockup\"><svg viewBox=\"0 0 32 32\" width=\"40\" height=\"40\" aria-hidden=\"true\"><path d=\"M5.5 9.5h21a2.5 2.5 0 0 1 2.5 2.5v1a2.5 2.5 0 0 1-2.5 2.5H19V27a2.5 2.5 0 0 1-2.5 2.5h-1A2.5 2.5 0 0 1 13 27V15.5H5.5A2.5 2.5 0 0 1 3 13v-1a2.5 2.5 0 0 1 2.5-2.5Z\"/><path class=\"ds-mark-flag\" d=\"M20.6 3.4h5a1.9 1.9 0 0 1 1.9 1.9v3.4h-8.8V5.3a1.9 1.9 0 0 1 1.9-1.9Z\"/></svg><span class=\"ds-wm\">taskora</span></span>",
+      "css": ".ds-lockup{display:inline-flex;align-items:center;gap:11px;color:var(--fg,#1a1e1b)}.ds-lockup svg{fill:currentColor}.ds-lockup:hover .ds-mark-flag{fill:var(--ink-ochre,#b8862b)}.ds-wm{font:690 26px/1 Archivo,ui-sans-serif,system-ui,sans-serif;font-stretch:114%;letter-spacing:-.02em}"
+    },
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single filled action per view, with its shortcut key inline.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>New task<kbd class=\"ds-btn-kbd\">C</kbd></button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:8px;border:1px solid transparent;background:var(--primary,#1a1e1b);color:var(--on-primary,#fff);font:500 13.5px/1 Archivo,ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 220ms ease}.ds-btn-primary:hover{background:color-mix(in oklab,var(--primary,#1a1e1b) 86%,var(--wall,#ecedea))}.ds-btn-primary:focus-visible{outline:2px solid var(--fg,#1a1e1b);outline-offset:2px}.ds-btn-kbd{font:500 10px/1 'Martian Mono',ui-monospace,monospace;padding:3px 5px;border-radius:4px;border:1px solid color-mix(in oklab,#fff 30%,transparent);opacity:.8}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Paper button with a rule border for every other action.",
+      "html": "<button class=\"ds-btn\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"M3 6h18M7 12h10M10 18h4\"/></svg>Filter</button>",
+      "css": ".ds-btn{display:inline-flex;align-items:center;gap:8px;height:36px;padding:0 14px;border-radius:8px;border:1px solid var(--line-2,#cfd2cd);background:var(--paper,#fff);color:var(--fg,#1a1e1b);font:500 13.5px/1 Archivo,ui-sans-serif,system-ui,sans-serif;cursor:pointer;transition:background-color 220ms ease}.ds-btn:hover{background:var(--paper-2,#f6f7f5)}.ds-btn:focus-visible{outline:2px solid var(--fg,#1a1e1b);outline-offset:2px}"
+    },
+    {
+      "name": "Task Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White paper card with owner flag, task code, title, tag, date rail and owner avatar.",
+      "html": "<article class=\"ds-card\" tabindex=\"0\" style=\"--ink:#46698f\"><span class=\"ds-flag\"></span><div class=\"ds-code\">WEB-142</div><h3 class=\"ds-card-title\">Redesign the onboarding checklist</h3><span class=\"ds-tag\">design</span><div class=\"ds-rail\"><span class=\"ds-bar\" style=\"left:30%;width:45%\"></span><span class=\"ds-today\" style=\"left:46%\"></span></div><div class=\"ds-foot\"><span>Nov 18</span><span class=\"ds-av\">JW</span></div></article>",
+      "css": ".ds-card{position:relative;width:260px;background:var(--paper,#fff);border-radius:10px;padding:14px 16px 12px;box-shadow:0 1px 2px rgba(26,30,27,.06),0 4px 12px -6px rgba(26,30,27,.14);color:var(--fg,#1a1e1b);font:14px/1.45 Archivo,ui-sans-serif,system-ui,sans-serif;transition:transform 220ms cubic-bezier(.34,1.32,.64,1),box-shadow 220ms cubic-bezier(.34,1.32,.64,1)}.ds-card:hover{transform:translateY(-2px);box-shadow:0 2px 4px rgba(26,30,27,.06),0 16px 32px -14px rgba(26,30,27,.30)}.ds-card:focus-visible{outline:2px solid var(--fg,#1a1e1b);outline-offset:3px}.ds-flag{position:absolute;top:-5px;right:18px;width:20px;height:9px;border-radius:3px 3px 1px 1px;background:var(--ink)}.ds-code{font:500 10.5px/1 'Martian Mono',ui-monospace,monospace;color:var(--fg-3,#646a63);letter-spacing:.01em;margin-bottom:6px}.ds-card-title{margin:0 0 12px;font-size:15px;font-weight:500;line-height:1.38;letter-spacing:-.005em}.ds-tag{display:inline-block;font-size:11.5px;line-height:18px;padding:0 8px;border-radius:999px;background:var(--paper-2,#f6f7f5);border:1px solid var(--line,#e0e2de);color:var(--fg-2,#555b54);margin-bottom:12px}.ds-rail{position:relative;height:4px;border-radius:2px;background:var(--rail,#cfd2cd);margin:2px 0 12px}.ds-bar{position:absolute;top:0;bottom:0;border-radius:2px;background:var(--rail-bar,#8e948d)}.ds-today{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;border-radius:1px;background:var(--fg,#1a1e1b)}.ds-foot{display:flex;align-items:center;justify-content:space-between;font-size:12.5px;color:var(--fg-2,#555b54);font-variant-numeric:tabular-nums}.ds-av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:600 11px/1 Archivo,sans-serif;background:color-mix(in oklab,var(--ink) 18%,#fff);color:var(--fg,#1a1e1b);box-shadow:0 0 0 1.5px var(--ink)}"
+    },
+    {
+      "name": "Tag",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Neutral pill for task tags; never coloured except by the owner lens.",
+      "html": "<span class=\"ds-chip\">frontend</span> <span class=\"ds-chip\">backend</span>",
+      "css": ".ds-chip{display:inline-block;font:11.5px/18px Archivo,ui-sans-serif,system-ui,sans-serif;padding:0 8px;border-radius:999px;background:var(--paper-2,#f6f7f5);border:1px solid var(--line,#e0e2de);color:var(--fg-2,#555b54)}"
+    },
+    {
+      "name": "People Key",
+      "kind": "custom",
+      "refersTo": "people-key",
+      "description": "Signature: avatars ringed in owner ink with neutral presence dots; hover turns on the owner lens.",
+      "html": "<div class=\"ds-people\"><span class=\"ds-note\">3 online · hover a teammate to see their work</span><button class=\"ds-person\" style=\"--ink:#b8862b\" aria-label=\"Show Mai's work\"><span class=\"ds-pav\">MT</span><span class=\"ds-online\"></span></button><button class=\"ds-person\" style=\"--ink:#46698f\" aria-label=\"Show JW's work\"><span class=\"ds-pav\">JW</span></button><button class=\"ds-person\" style=\"--ink:#a4505e\" aria-label=\"Show PN's work\"><span class=\"ds-pav\">PN</span><span class=\"ds-online\"></span></button></div>",
+      "css": ".ds-people{display:inline-flex;align-items:center;gap:4px;height:44px;padding:0 6px 0 14px;background:var(--paper,#fff);border-radius:999px;box-shadow:0 1px 2px rgba(26,30,27,.06),0 4px 12px -6px rgba(26,30,27,.14);font-family:Archivo,ui-sans-serif,system-ui,sans-serif}.ds-note{font-size:12.5px;color:var(--fg-2,#555b54);margin-right:6px}.ds-person{position:relative;border:0;padding:0;background:none;border-radius:50%;cursor:pointer;transition:transform 220ms cubic-bezier(.34,1.32,.64,1)}.ds-person:hover{transform:translateY(-2px)}.ds-person:hover .ds-pav{box-shadow:0 0 0 2px var(--paper,#fff),0 0 0 4px var(--ink)}.ds-person:focus-visible{outline:2px solid var(--fg,#1a1e1b);outline-offset:2px}.ds-pav{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:600 11px/1 Archivo,sans-serif;background:color-mix(in oklab,var(--ink) 18%,#fff);color:var(--fg,#1a1e1b);box-shadow:0 0 0 1.5px var(--ink)}.ds-online{position:absolute;right:-1px;bottom:-1px;width:10px;height:10px;border-radius:50%;background:var(--fg,#1a1e1b);box-shadow:0 0 0 2px var(--paper,#fff)}"
+    },
+    {
+      "name": "Sidebar Navigation",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Graphite shell with search, nav items and the current page ring.",
+      "html": "<nav class=\"ds-side\"><button class=\"ds-search\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><circle cx=\"11\" cy=\"11\" r=\"7\"/><path d=\"m20 20-3.5-3.5\"/></svg><span>Search or jump to</span><kbd>⌘K</kbd></button><button class=\"ds-nav\">Inbox<span class=\"ds-badge\">3</span></button><button class=\"ds-nav\" aria-current=\"page\">Sprint 14</button><button class=\"ds-nav\">Backlog</button></nav>",
+      "css": ".ds-side{width:252px;display:flex;flex-direction:column;gap:2px;padding:14px 12px;background:var(--shell,#1b201d);color:var(--shell-fg,#e9ece8);font-family:Archivo,ui-sans-serif,system-ui,sans-serif}.ds-search{display:flex;align-items:center;gap:8px;height:36px;padding:0 8px 0 10px;margin-bottom:10px;border-radius:8px;background:var(--shell-2,#262c28);border:1px solid var(--shell-line,#323934);color:var(--shell-mut,#a9b0aa);font-size:13px;cursor:pointer}.ds-search span{flex:1;text-align:left}.ds-search:hover{color:var(--shell-fg,#e9ece8)}.ds-search kbd{font:500 10px/1 'Martian Mono',monospace;padding:3px 5px;border-radius:4px;border:1px solid var(--shell-line,#323934)}.ds-nav{display:flex;align-items:center;height:32px;padding:0 10px;border:0;border-radius:7px;background:none;color:var(--shell-fg,#e9ece8);font-size:13.5px;text-align:left;cursor:pointer}.ds-nav:hover{background:var(--shell-2,#262c28)}.ds-nav[aria-current=page]{background:var(--shell-2,#262c28);box-shadow:inset 0 0 0 1px var(--shell-line,#323934)}.ds-nav:focus-visible{outline:2px solid var(--shell-fg,#e9ece8);outline-offset:2px}.ds-badge{margin-left:auto;font-size:12px;color:var(--shell-mut,#a9b0aa)}"
+    },
+    {
+      "name": "Select Field",
+      "kind": "input",
+      "refersTo": "select",
+      "description": "Paper select with a rule border and custom chevron, used in the drawer property grid.",
+      "html": "<span class=\"ds-sel\"><select><option>In progress</option><option>In review</option></select><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\"><path d=\"m6 9 6 6 6-6\"/></svg></span>",
+      "css": ".ds-sel{position:relative;display:inline-flex}.ds-sel select{appearance:none;height:32px;padding:0 30px 0 10px;border-radius:8px;border:1px solid var(--line-2,#cfd2cd);background:var(--paper,#fff);color:var(--fg,#1a1e1b);font:13.5px Archivo,ui-sans-serif,system-ui,sans-serif;cursor:pointer}.ds-sel select:hover{background:var(--paper-2,#f6f7f5)}.ds-sel select:focus-visible{outline:2px solid var(--fg,#1a1e1b);outline-offset:2px}.ds-sel svg{position:absolute;right:9px;top:50%;margin-top:-7px;pointer-events:none;color:var(--fg-2,#555b54)}"
+    },
+    {
+      "name": "Comment Field",
+      "kind": "input",
+      "refersTo": "textarea",
+      "description": "Paper textarea for comments with the global graphite focus outline.",
+      "html": "<textarea class=\"ds-textarea\" placeholder=\"Write a comment, @mention a teammate\"></textarea>",
+      "css": ".ds-textarea{display:block;width:320px;min-height:76px;resize:vertical;border:1px solid var(--line-2,#cfd2cd);border-radius:10px;background:var(--paper,#fff);color:var(--fg,#1a1e1b);padding:10px 12px;font:14px/1.5 Archivo,ui-sans-serif,system-ui,sans-serif}.ds-textarea:focus{outline:2px solid var(--fg,#1a1e1b);outline-offset:1px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Quiet Planning Wall",
+    "overview": "A calm, cool stone wall of white paper cards. Each teammate owns one deep, desaturated ink, and that ink appears only where it marks ownership: a small paper flag on their cards, a ring around their avatar, and the wash of the owner lens. At rest the wall is white, grey and graphite; colour arrives only when someone asks whose work is whose. A deep graphite sidebar frames the wall like the room it hangs in.\n\nDensity is generous rather than packed: wide status lanes (minimum 260px, about 300px on a laptop), cards with real breathing room, and one quiet layer of paper shadow. One family, Archivo, does all the talking. Its wide cut is the wall's signage, reserved for the list title and the open task's title; its normal width is the workhorse for everything else, including card titles; and only task codes are monospaced, in Martian Mono. Controls stay standard and legible so the system reads as premium through restraint, not ornament.\n\nThe world deliberately refuses the category default (grey lane columns, overlapping avatar stacks, one blue accent, colourful status pills) and equally refuses the loud all-colour sticky-note wall.",
+    "keyCharacteristics": [
+      "Cool stone wall, white paper cards, graphite sidebar.",
+      "Five owner inks, used only to mark whose work something is.",
+      "One family: Archivo's wide cut for two titles only, normal width for everything else; Martian Mono for task codes only.",
+      "The Flagged T mark: the T of Taskora wearing the owner flag.",
+      "One soft two-layer paper shadow at rest, a deeper one on lift.",
+      "One motion constant (220ms) with a slight settling overshoot; my moves settle, a teammate's moves glide.",
+      "Light and dark are full themes built from the same semantic roles."
+    ],
+    "rules": [
+      {
+        "name": "The Ink Means Owner Rule",
+        "body": "An owner ink appears only on something that belongs to, or points at, one specific teammate. Never use an ink for status, category, priority, tags or decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The White At Rest Rule",
+        "body": "With no lens active, the board shows no colour beyond small flags, avatar rings and brick for overdue. A full card turns colour only under the owner lens.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Ramp Rule",
+        "body": "Light-theme neutrals come from the 11-step ramp. Add a role by pointing it at a ramp step, not by inventing a new grey.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Titles Rule",
+        "body": "In the app the wide cut sets exactly two things: the current list's title and the open task's title. Card titles, dates, buttons and every other piece of UI stay at normal width. Marketing pages extend it to their headlines and the wordmark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Codes Only Mono Rule",
+        "body": "Martian Mono is for task codes, keyboard keys and code samples. Never set dates, counts or body text in mono; use Archivo with tabular figures instead.",
+        "section": "typography"
+      },
+      {
+        "name": "The Stretch After Shorthand Rule",
+        "body": "The `font` shorthand resets `font-stretch`, so declare `font-stretch` after it, never before.",
+        "section": "typography"
+      },
+      {
+        "name": "The Paper Not Glass Rule",
+        "body": "No blur, no glassmorphism, no glow. Depth is a soft paper shadow or a hairline.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do pass a teammate's colour through one `--ink` variable and derive every tint from it with `color-mix(in oklab, ...)`: 18% for avatar fills, 13% for the lens wash, 20% for mentions, 10% for tags under the lens.",
+      "Do keep the board white at rest; let the owner lens be the only way a whole card turns colour.",
+      "Do use the one motion constant: 220ms with `cubic-bezier(.34,1.32,.64,1)` for things that settle (cards, people, popovers), `cubic-bezier(.16,1,.3,1)` for sheets that slide (drawer 340ms, mobile sidebar 300ms), and collapse everything to 1ms under reduced motion.",
+      "Do show a task code (Martian Mono) wherever a task is referenced: card, drawer header, palette result.",
+      "Do draw date rails to the task's real start-to-due span against the list's date range.",
+      "Do use Lucide-style line icons at 16px with a 1.75 stroke, in `currentColor`.",
+      "Do keep presence dots neutral graphite (`fg`) with a paper ring.",
+      "Do keep touch targets at 44px on coarse pointers, extending hit areas with an invisible inset rather than growing the visible control."
+    ],
+    "donts": [
+      "Don't use an owner ink for status, priority, tags, categories or decoration. Status is carried by lane position and a neutral icon; priority by a neutral bar icon (brick only for urgent).",
+      "Don't give lanes a tinted column background at rest; the only lane fill is the 5% drop-target wash during drag.",
+      "Don't overlap avatars into stacks. Every person is a separate, ringed circle.",
+      "Don't add a blue (or any) brand accent. The primary action is graphite.",
+      "Don't set card titles, dates or controls in the wide cut.",
+      "Don't set anything but task codes and keyboard keys in mono.",
+      "Don't use blur, glass or glow for depth.",
+      "Don't let the drawer squeeze the board; it always overlays."
+    ]
+  }
+}
