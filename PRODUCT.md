@@ -46,6 +46,9 @@ A task manager for small teams, in the ClickUp family: Workspace → Space → F
 
 ## Evidence on Hand
 
+- **Board prototype:** `design/prototype/index.html`, a clickable demo of the board with sample data, the guided tour, the Inbox and teammates' live moves. Published at https://claude.ai/artifact/1PtDkDhexTtmmVB13yAZLb.
+- **Landing page:** `design/landing/index.html` ("Two screens, one board"), published at https://claude.ai/artifact/WxRGV59SdZe1AYRTKXnFSM.
+- **Brand files:** `design/brand/taskora-mark.svg` (the Flagged T) and `design/brand/taskora-icon.svg` (app icon and favicon). `design/brand/alternates/` holds a mark saved for other projects, not Taskora.
 - No users, testimonials, metrics or logos exist. Demo content is sample data and must read as such, never as real customers.
 
 ## Product Principles

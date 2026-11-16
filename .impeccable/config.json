@@ -41,6 +41,15 @@
         ],
         "createdAt": "2026-11-16T03:21:52.909Z",
         "reason": "Decision board that compares candidate typefaces and shows the retired Source Serif 4 + Geist as reference; off-system fonts are its content"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "design/landing/index.html"
+        ],
+        "createdAt": "2026-11-16T13:34:48.123Z",
+        "reason": "Agent, 2026-11-16: static detector pairs dark-theme text with light-theme paper; rendered check of every text node in light and dark (oklab mixes resolved) found 0 below WCAG AA. Re-check by render after colour changes."
       }
     ]
   }
