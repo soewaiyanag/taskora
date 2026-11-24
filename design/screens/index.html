@@ -1,0 +1,768 @@
+<title>Taskora Screens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=Martian+Mono:wdth,wght@87.5,500..600&display=swap">
+<style>
+/* Layout: a graphite review bar picks a screen; each screen is drawn full size in the Quiet Planning Wall world (DESIGN.md). */
+:root {
+  --wall:#ecedea; --paper:#ffffff; --paper-2:#f6f7f5; --line:#e0e2de; --line-2:#cfd2cd;
+  --fg:#1a1e1b; --fg-2:#555b54; --fg-3:#646a63; --rail:#cfd2cd; --rail-bar:#8e948d;
+  --shell:#1b201d; --shell-2:#262c28; --shell-line:#323934; --shell-fg:#e9ece8; --shell-mut:#a9b0aa;
+  --primary:#1a1e1b; --on-primary:#ffffff; --danger:#b5412c;
+  --toast-bg:#1b201d; --toast-fg:#e9ece8; --scrim:rgba(26,30,27,.28);
+  --o-mt:#b8862b; --o-jw:#46698f; --o-pn:#a4505e; --o-da:#5f8a5b; --o-so:#3c8580;
+  --sh-card:0 1px 2px rgba(26,30,27,.06), 0 4px 12px -6px rgba(26,30,27,.14);
+  --sh-lift:0 2px 4px rgba(26,30,27,.06), 0 16px 32px -14px rgba(26,30,27,.30);
+  --sh-win:0 0 0 1px rgba(26,30,27,.08), 0 2px 4px rgba(26,30,27,.05), 0 34px 64px -30px rgba(26,30,27,.38);
+  --f-ui:"Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-display:"Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; --wide:116%;
+  --f-mono:"Martian Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --ease:cubic-bezier(.34,1.32,.64,1); --ease-out:cubic-bezier(.16,1,.3,1); --dur:220ms;
+  --rev-h:56px;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --wall:#141715; --paper:#1d211e; --paper-2:#242925; --line:#2e342f; --line-2:#3b423c;
+  --fg:#e8ebe7; --fg-2:#b4bab3; --fg-3:#959c94; --rail:#343a35; --rail-bar:#7d847c;
+  --shell:#0d0f0e; --shell-2:#1a1e1b; --shell-line:#262c28; --shell-fg:#e9ece8; --shell-mut:#a2a9a3;
+  --primary:#e8ebe7; --on-primary:#141715; --danger:#e07a63;
+  --toast-bg:#e8ebe7; --toast-fg:#141715; --scrim:rgba(0,0,0,.5);
+  --o-mt:#d9a84a; --o-jw:#7fa2c9; --o-pn:#cc7f8c; --o-da:#8db889; --o-so:#6bb5ae;
+  --sh-card:0 1px 2px rgba(0,0,0,.4), 0 4px 12px -6px rgba(0,0,0,.5);
+  --sh-lift:0 2px 4px rgba(0,0,0,.4), 0 16px 32px -14px rgba(0,0,0,.7);
+  --sh-win:0 0 0 1px rgba(255,255,255,.06), 0 2px 4px rgba(0,0,0,.3), 0 34px 64px -30px rgba(0,0,0,.8);
+  color-scheme:dark;
+} }
+:root[data-theme="dark"] {
+  --wall:#141715; --paper:#1d211e; --paper-2:#242925; --line:#2e342f; --line-2:#3b423c;
+  --fg:#e8ebe7; --fg-2:#b4bab3; --fg-3:#959c94; --rail:#343a35; --rail-bar:#7d847c;
+  --shell:#0d0f0e; --shell-2:#1a1e1b; --shell-line:#262c28; --shell-fg:#e9ece8; --shell-mut:#a2a9a3;
+  --primary:#e8ebe7; --on-primary:#141715; --danger:#e07a63;
+  --toast-bg:#e8ebe7; --toast-fg:#141715; --scrim:rgba(0,0,0,.5);
+  --o-mt:#d9a84a; --o-jw:#7fa2c9; --o-pn:#cc7f8c; --o-da:#8db889; --o-so:#6bb5ae;
+  --sh-card:0 1px 2px rgba(0,0,0,.4), 0 4px 12px -6px rgba(0,0,0,.5);
+  --sh-lift:0 2px 4px rgba(0,0,0,.4), 0 16px 32px -14px rgba(0,0,0,.7);
+  --sh-win:0 0 0 1px rgba(255,255,255,.06), 0 2px 4px rgba(0,0,0,.3), 0 34px 64px -30px rgba(0,0,0,.8);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{margin:0;background:var(--wall);color:var(--fg);font:14px/1.45 var(--f-ui);-webkit-font-smoothing:antialiased}
+::selection{background:color-mix(in oklab,var(--fg) 16%,transparent)}
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+button,input,select,textarea{font:inherit;color:var(--fg)}
+button{cursor:pointer;background:none;border:0;padding:0;color:inherit}
+h1,h2,h3,p,ol,ul,dl,dd{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit;text-underline-offset:3px}
+svg.i{width:16px;height:16px;flex:none;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+kbd{font:500 10px/1 var(--f-mono);font-stretch:87.5%;padding:3px 5px;border-radius:4px;border:1px solid var(--line-2);background:var(--paper-2);color:var(--fg-2)}
+.code{font:500 10.5px/1 var(--f-mono);font-stretch:87.5%;color:var(--fg-3);letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.muted{color:var(--fg-2)}
+
+/* ---------- review bar (not part of the product) ---------- */
+.rev{position:sticky;top:env(safe-area-inset-top,0px);z-index:70;display:flex;align-items:center;gap:16px;height:var(--rev-h);padding:0 16px;background:var(--shell);color:var(--shell-fg);border-bottom:1px solid var(--shell-line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:71;background:var(--shell)}
+.rev-name{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;white-space:nowrap}
+.rev-name small{font-weight:400;color:var(--shell-mut)}
+.rev-tabs{display:flex;gap:2px;min-width:0;overflow-x:auto;scrollbar-width:none;flex:1}
+.rev-tabs a{flex:none;display:inline-flex;align-items:center;height:32px;padding:0 12px;border-radius:7px;font-size:13px;color:var(--shell-mut);text-decoration:none;white-space:nowrap}
+.rev-tabs a:hover{color:var(--shell-fg);background:var(--shell-2)}
+.rev-tabs a[aria-current="page"]{color:var(--shell-fg);background:var(--shell-2);box-shadow:inset 0 0 0 1px var(--shell-line)}
+.rev-tabs .sep{flex:none;width:1px;margin:8px 6px;background:var(--shell-line)}
+.rev .icon-btn{color:var(--shell-mut)}
+.rev .icon-btn:hover{background:var(--shell-2);color:var(--shell-fg)}
+.rev :focus-visible{outline-color:var(--shell-fg)}
+@media (max-width:720px){.rev-name small{display:none}}
+
+/* ---------- shared controls ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:36px;padding:0 14px;border-radius:8px;border:1px solid var(--line-2);background:var(--paper);font-weight:500;font-size:13.5px;white-space:nowrap;text-decoration:none;transition:background-color var(--dur) ease}
+.btn:hover{background:var(--paper-2)}
+.btn-primary{background:var(--primary);color:var(--on-primary);border-color:transparent}
+.btn-primary:hover{background:color-mix(in oklab,var(--primary) 86%,var(--wall))}
+.btn-primary:disabled{opacity:.4;cursor:not-allowed}
+.btn-primary kbd{background:transparent;border-color:color-mix(in oklab,var(--on-primary) 30%,transparent);color:inherit;opacity:.8}
+.btn.sm{height:32px;padding:0 12px;font-size:13px}
+.btn.block{width:100%;height:40px;font-size:14px}
+.icon-btn{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:7px;color:var(--fg-2)}
+.icon-btn:hover{background:var(--paper-2);color:var(--fg)}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label,.lbl{font-size:13px;font-weight:500}
+.field .hint{font-size:12.5px;color:var(--fg-2)}
+.input{width:100%;height:36px;padding:0 11px;border-radius:8px;border:1px solid var(--line-2);background:var(--paper);font-size:14px}
+.input:focus{outline:2px solid var(--fg);outline-offset:1px}
+.input::placeholder{color:var(--fg-3)}
+.field.err .input{border-color:var(--danger)}
+.field .msg{display:none;font-size:12.5px;color:var(--danger)}
+.field.err .msg{display:block}
+.with-btn{position:relative}
+.with-btn .input{padding-right:64px}
+.with-btn button{position:absolute;right:4px;top:4px;height:28px;padding:0 10px;border-radius:6px;font-size:12.5px;font-weight:500;color:var(--fg-2)}
+.with-btn button:hover{background:var(--paper-2);color:var(--fg)}
+.sel-wrap{position:relative;display:inline-flex}
+.sel-wrap select{appearance:none;height:32px;padding:0 30px 0 10px;border-radius:8px;border:1px solid var(--line-2);background:var(--paper);font-size:13.5px;cursor:pointer}
+.sel-wrap select:hover{background:var(--paper-2)}
+.sel-wrap svg{position:absolute;right:9px;top:50%;margin-top:-7px;width:14px;height:14px;pointer-events:none;transform:rotate(90deg);color:var(--fg-2)}
+.av{position:relative;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;flex:none;font:600 11px/1 var(--f-ui);background:color-mix(in oklab,var(--ink) 18%,var(--paper));color:var(--fg);box-shadow:0 0 0 1.5px var(--ink)}
+.av.lg{width:48px;height:48px;font-size:15px;box-shadow:0 0 0 2px var(--ink)}
+.av .online{position:absolute;right:-1px;bottom:-1px;width:9px;height:9px;border-radius:50%;background:var(--fg);box-shadow:0 0 0 2px var(--paper)}
+.chip{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;background:var(--paper-2);border:1px solid var(--line);font-size:11.5px;color:var(--fg-2);white-space:nowrap}
+.seg{display:inline-flex;padding:3px;gap:2px;border-radius:9px;background:var(--paper-2);border:1px solid var(--line)}
+.seg button{height:28px;padding:0 12px;border-radius:6px;font-size:13px;color:var(--fg-2)}
+.seg button[aria-pressed="true"]{background:var(--paper);color:var(--fg);font-weight:500;box-shadow:var(--sh-card)}
+.switch{position:relative;width:36px;height:22px;flex:none;border-radius:999px;background:var(--line-2);transition:background-color var(--dur) ease}
+.switch::after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--paper);box-shadow:0 1px 2px rgba(0,0,0,.2);transition:transform var(--dur) var(--ease)}
+.switch[aria-checked="true"]{background:var(--fg)}
+.switch[aria-checked="true"]::after{transform:translateX(14px)}
+@media (pointer:coarse){.switch::before{content:"";position:absolute;inset:-11px -4px}}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));z-index:80;display:flex;align-items:center;gap:12px;padding:10px 16px;border-radius:10px;background:var(--toast-bg);color:var(--toast-fg);font-size:13.5px;box-shadow:0 18px 40px -16px rgba(0,0,0,.45);transform:translate(-50%,16px);opacity:0;transition:transform 300ms var(--ease),opacity 200ms ease;pointer-events:none;max-width:calc(100% - 32px)}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.mark{fill:currentColor}
+.mark .flagp{fill:var(--flag,currentColor)}
+.lockup{display:inline-flex;align-items:center;gap:9px;font-size:21px;line-height:1;text-decoration:none;color:var(--fg)}
+.lockup svg{width:26px;height:26px}
+.lockup span{font-weight:690;font-stretch:114%;letter-spacing:-.02em}
+
+/* ---------- auth ---------- */
+.auth{min-height:calc(100dvh - var(--rev-h));display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:72px;align-items:center;max-width:1280px;margin:0 auto;padding:40px 56px 56px}
+.auth-col{display:flex;flex-direction:column;gap:28px}
+.auth-card{background:var(--paper);border-radius:14px;padding:32px;box-shadow:var(--sh-card)}
+.auth-card h1{font:640 30px/1.15 var(--f-display);font-stretch:var(--wide);letter-spacing:-.015em;text-wrap:balance}
+.auth-card .lead{margin-top:8px;font-size:14.5px;color:var(--fg-2)}
+.auth-form{display:flex;flex-direction:column;gap:16px;margin-top:24px}
+.auth-form .row2{display:flex;justify-content:space-between;align-items:baseline}
+.banner{display:none;gap:10px;padding:10px 12px;border-radius:10px;background:color-mix(in oklab,var(--danger) 9%,var(--paper));box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--danger) 35%,transparent);font-size:13.5px}
+.banner.on{display:flex}
+.banner svg{color:var(--danger);margin-top:2px}
+.or{display:flex;align-items:center;gap:12px;margin:20px 0;font-size:12.5px;color:var(--fg-2)}
+.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.demo-btn{flex-direction:column;gap:1px;height:auto;padding:10px 14px}
+.demo-btn b{font-weight:600;font-size:14px}
+.demo-btn small{font-size:12px;color:var(--fg-2);font-weight:400}
+.auth-foot{font-size:13.5px;color:var(--fg-2)}
+.auth-foot a{color:var(--fg);font-weight:500}
+.pw-meter{display:flex;gap:4px;margin-top:2px}
+.pw-meter i{flex:1;height:3px;border-radius:2px;background:var(--rail);transition:background-color var(--dur) ease}
+.pw-meter i.on{background:var(--fg)}
+
+/* the live board vignette */
+.vig{display:flex;flex-direction:column;gap:16px;min-width:0}
+.win{border-radius:14px;overflow:hidden;background:var(--wall);box-shadow:var(--sh-win)}
+.tb{height:38px;display:flex;align-items:center;gap:9px;padding:0 14px;background:var(--paper);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--fg-2)}
+.tb b{font-weight:600;color:var(--fg)}
+.tb .r{margin-left:auto}
+.mini{display:grid;grid-template-columns:44px minmax(0,1fr);min-height:400px}
+.mini .sb{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:14px;background:var(--shell)}
+.mini .sb .sq{width:24px;height:24px;margin-bottom:6px;border-radius:6px;background:var(--shell-2);box-shadow:inset 0 0 0 1px var(--shell-line);color:var(--shell-fg);font:600 11px/24px var(--f-ui);text-align:center}
+.mini .sb i{width:20px;height:5px;border-radius:3px;background:var(--shell-line)}
+.mini .mn{position:relative;padding:14px 16px 18px;min-width:0}
+.mini .top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.mini h3{font:640 22px/1.1 var(--f-display);font-stretch:var(--wide);letter-spacing:-.015em}
+.key{display:flex;gap:5px;padding:4px 6px;border-radius:999px;background:var(--paper);box-shadow:var(--sh-card)}
+.key .av{width:22px;height:22px;font-size:10px}
+.lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.lh{display:flex;align-items:baseline;gap:6px;padding:2px 4px 8px;font-size:12.5px;font-weight:600}
+.lh em{font-style:normal;font-weight:400;color:var(--fg-2)}
+.wb{display:flex;flex-direction:column;gap:10px;padding:6px 4px}
+.mc{position:relative;padding:11px 12px 9px;border-radius:10px;background:var(--paper);box-shadow:var(--sh-card);outline:2px solid transparent;outline-offset:3px}
+.mc .flag{position:absolute;top:-4px;right:14px;width:16px;height:7px;border-radius:3px 3px 1px 1px;background:var(--ink)}
+.mc .code{display:block;margin-bottom:5px;font-size:10px}
+.mc-t{margin-bottom:9px;font-size:13px;font-weight:500;line-height:1.35;text-wrap:pretty}
+.mrail{position:relative;height:3px;margin:0 0 9px;border-radius:2px;background:var(--rail)}
+.mrail b{position:absolute;top:0;bottom:0;border-radius:2px;background:var(--rail-bar)}
+.mrail b.over{background:var(--danger)}
+.mrail s{position:absolute;top:-3px;bottom:-3px;left:35%;width:2px;margin-left:-1px;border-radius:1px;background:var(--fg)}
+.mc-f{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--fg-2);font-variant-numeric:tabular-nums}
+.mc-f .late{color:var(--danger);font-weight:500}
+.mc-f .av{margin-left:auto;width:22px;height:22px;font-size:10px}
+.mc.done{background:color-mix(in oklab,var(--paper) 55%,var(--wall));box-shadow:none}
+.mc.done .mc-t{color:var(--fg-2);margin-bottom:6px}
+.mc.done .flag{opacity:.55}
+.mc.remote{outline-color:var(--rink)}
+.rtag{position:absolute;left:12px;top:-10px;padding:0 7px;border-radius:999px;background:var(--rink);color:var(--paper);font:500 11px/18px var(--f-ui)}
+.wtoast{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:7px 14px 7px 7px;border-radius:10px;background:var(--shell);color:var(--shell-fg);font-size:12.5px;white-space:nowrap;box-shadow:0 18px 36px -18px rgba(0,0,0,.55)}
+.wtoast .code{color:var(--shell-fg);font-size:10.5px}
+.vig-cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--fg-2)}
+.vig-cap b{color:var(--fg);font-weight:500}
+.vig-cap .chip{background:transparent;border-color:var(--line-2)}
+
+/* ---------- app shell (sidebar) ---------- */
+.app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:calc(100dvh - var(--rev-h))}
+.side{position:sticky;top:calc(var(--rev-h) + env(safe-area-inset-top,0px));align-self:start;height:calc(100dvh - var(--rev-h) - env(safe-area-inset-top,0px));background:var(--shell);color:var(--shell-fg);display:flex;flex-direction:column;gap:2px;padding:14px 12px 12px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--shell-line) transparent}
+.ws{display:flex;align-items:center;gap:10px;padding:6px 8px 12px}
+.ws svg{width:28px;height:28px;flex:none;color:var(--shell-fg)}
+.ws-name{font-weight:600;font-size:14px;line-height:1.2}
+.ws-sub{font-size:12px;color:var(--shell-mut)}
+.chip-demo{margin-left:auto;font-size:11px;font-weight:500;padding:2px 8px;border-radius:999px;background:var(--shell-2);color:var(--shell-mut);border:1px solid var(--shell-line)}
+.search-btn{display:flex;align-items:center;gap:8px;width:100%;height:36px;padding:0 8px 0 10px;margin-bottom:10px;border-radius:8px;background:var(--shell-2);border:1px solid var(--shell-line);color:var(--shell-mut);font-size:13px;text-align:left}
+.search-btn span{flex:1}
+.search-btn kbd,.side kbd{background:transparent;border-color:var(--shell-line);color:var(--shell-mut)}
+.nav-item{display:flex;align-items:center;gap:10px;width:100%;height:32px;padding:0 10px;border-radius:7px;color:var(--shell-fg);font-size:13.5px;text-align:left;text-decoration:none}
+.nav-item:hover{background:var(--shell-2)}
+.nav-item[aria-current="page"]{background:var(--shell-2);box-shadow:inset 0 0 0 1px var(--shell-line)}
+.nav-item svg{color:var(--shell-mut)}
+.nav-item .badge{margin-left:auto;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}
+.nav-item .n{margin-left:auto;font-size:12px;color:var(--shell-mut);font-variant-numeric:tabular-nums}
+.group-label{font-size:12px;font-weight:500;color:var(--shell-mut);padding:18px 10px 6px}
+.kids{padding-left:16px;display:flex;flex-direction:column;gap:2px}
+.space-mark{width:16px;height:16px;border-radius:5px;display:grid;place-items:center;font-size:10px;font-weight:600;background:var(--shell-line);color:var(--shell-fg)}
+.side-foot{margin-top:auto;padding-top:14px}
+.me{display:flex;align-items:center;gap:10px;padding:6px 4px 0 8px}
+.me .who{font-size:13.5px;font-weight:500}
+.me .icon-btn{margin-left:auto;color:var(--shell-mut)}
+.me .icon-btn:hover{background:var(--shell-2);color:var(--shell-fg)}
+.side :focus-visible{outline-color:var(--shell-fg)}
+.main{min-width:0;padding:26px 32px 64px}
+.pagehead{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:28px}
+.crumb{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--fg-2)}
+.crumb svg{width:14px;height:14px}
+h1.title{font:640 36px/1.08 var(--f-display);font-stretch:var(--wide);letter-spacing:-.018em;margin:8px 0 6px;text-wrap:balance}
+.sub{font-size:13px;color:var(--fg-2)}
+.tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.menu-btn{display:none}
+
+/* ---------- my tasks ---------- */
+.groups{display:flex;flex-direction:column;gap:28px;max-width:1120px}
+.grp-h{display:flex;align-items:baseline;gap:8px;padding:0 6px 10px;font-size:13.5px;font-weight:600}
+.grp-h em{font-style:normal;font-weight:400;font-size:13px;color:var(--fg-2);font-variant-numeric:tabular-nums}
+.grp-h .over{color:var(--danger)}
+.grp-h button{margin-left:auto;font-size:12.5px;font-weight:500;color:var(--fg-2);text-decoration:underline;text-underline-offset:3px}
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{position:relative;display:grid;grid-template-columns:72px minmax(0,1fr) 150px 18px 128px 112px;grid-template-areas:"code body rail prio due status";align-items:center;gap:20px;padding:14px 18px 14px 20px;border-radius:10px;background:var(--paper);box-shadow:var(--sh-card);cursor:pointer;text-align:left;width:100%;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease)}
+.row:hover{transform:translateY(-2px);box-shadow:var(--sh-lift)}
+.row .flag{position:absolute;top:-5px;right:18px;width:20px;height:9px;border-radius:3px 3px 1px 1px;background:var(--ink)}
+.row .code{grid-area:code}
+.row .body{grid-area:body;min-width:0}
+.row .t{display:block;font-size:15px;font-weight:500;line-height:1.35;letter-spacing:-.005em}
+.row .where{display:flex;align-items:center;gap:4px;margin-top:3px;font-size:12.5px;color:var(--fg-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .where svg{width:12px;height:12px}
+.row .rail{grid-area:rail;position:relative;height:4px;border-radius:2px;background:var(--rail)}
+.rail .bar{position:absolute;top:0;bottom:0;border-radius:2px;background:var(--rail-bar)}
+.rail .bar.over{background:var(--danger)}
+.rail .today{position:absolute;top:-4px;bottom:-4px;width:2px;margin-left:-1px;border-radius:1px;background:var(--fg)}
+.row .prio{grid-area:prio;display:inline-flex;color:var(--fg-3)}
+.row .prio.urgent{color:var(--danger)}
+.row .due{grid-area:due;font-size:12.5px;color:var(--fg-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.row .due.over{color:var(--danger);font-weight:500}
+.row .st{grid-area:status;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--fg-2);white-space:nowrap}
+.row.done{background:color-mix(in oklab,var(--paper) 55%,var(--wall));box-shadow:none}
+.row.done .t{color:var(--fg-2);font-size:14px}
+.row.done .flag{opacity:.55}
+.colhead{display:grid;grid-template-columns:72px minmax(0,1fr) 150px 18px 128px 112px;gap:20px;padding:0 18px 8px 20px;font-size:12px;font-weight:500;color:var(--fg-2)}
+.colhead span:nth-child(4){visibility:hidden}
+
+/* ---------- settings ---------- */
+.set-nav .back{display:flex;align-items:center;gap:8px;height:32px;padding:0 10px;margin:2px 0 6px;border-radius:7px;font-size:13.5px;color:var(--shell-mut);text-decoration:none}
+.set-nav .back:hover{background:var(--shell-2);color:var(--shell-fg)}
+.set-nav .back svg{transform:rotate(180deg)}
+.set-main{min-width:0;padding:32px 48px 80px}
+.set-col{max-width:720px;display:flex;flex-direction:column;gap:24px}
+.set-col .pagehead{margin-bottom:4px}
+.panel{background:var(--paper);border-radius:14px;box-shadow:var(--sh-card)}
+.panel-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:18px 24px 14px;border-bottom:1px solid var(--line)}
+.panel-h h2{font-size:15px;font-weight:600}
+.panel-h p{font-size:13px;color:var(--fg-2)}
+.prow{display:grid;grid-template-columns:200px minmax(0,1fr);gap:8px 24px;align-items:start;padding:18px 24px;border-bottom:1px solid var(--line)}
+.prow:last-child{border-bottom:0}
+.prow .pl b{display:block;font-size:13.5px;font-weight:600}
+.prow .pl span{display:block;margin-top:2px;font-size:12.5px;color:var(--fg-2);line-height:1.45}
+.prow .pc{display:flex;flex-direction:column;gap:8px;min-width:0}
+.prow .pc.inline{flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap}
+.panel-f{display:flex;align-items:center;justify-content:flex-end;gap:10px;padding:14px 24px;border-top:1px solid var(--line);background:var(--paper-2);border-radius:0 0 14px 14px;font-size:12.5px;color:var(--fg-2)}
+.panel-f .note{margin-right:auto}
+.inkrow{display:flex;align-items:center;gap:12px}
+.inkchip{width:30px;height:30px;border-radius:8px;background:var(--ink);box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--fg) 12%,transparent)}
+.team-inks{display:flex;gap:6px;flex-wrap:wrap}
+.team-inks span{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 9px 0 6px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--fg-2)}
+.team-inks i{width:10px;height:10px;border-radius:3px;background:var(--ink)}
+.tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.tbl th{padding:10px 24px;text-align:left;font-size:12px;font-weight:500;color:var(--fg-2);border-bottom:1px solid var(--line)}
+.tbl td{padding:12px 24px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl .pfx{width:92px;height:32px;font:500 12px var(--f-mono);font-stretch:87.5%;text-transform:uppercase}
+.tbl .num{font-variant-numeric:tabular-nums;color:var(--fg-2)}
+.person{display:flex;align-items:center;gap:12px;min-width:0}
+.person b{display:block;font-weight:500}
+.person small{display:block;font-size:12.5px;color:var(--fg-2);overflow:hidden;text-overflow:ellipsis}
+.you{margin-left:6px}
+.invite{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:10px;padding:18px 24px}
+.linkbox{display:flex;align-items:center;gap:10px;padding:0 24px 18px;flex-wrap:wrap}
+.linkbox .input{flex:1;min-width:200px;color:var(--fg-2);background:var(--paper-2)}
+.linkbox p{flex-basis:100%;font-size:12.5px;color:var(--fg-2)}
+.linkbox p button{font-weight:500;color:var(--fg);text-decoration:underline;text-underline-offset:3px}
+.confirm{display:flex;flex-direction:column;gap:10px;margin-top:4px;padding:14px;border-radius:10px;background:var(--paper-2);border:1px solid var(--line)}
+.confirm .acts{display:flex;gap:8px;flex-wrap:wrap}
+.ntbl th:not(:first-child),.ntbl td:not(:first-child){width:84px;text-align:center}
+.ntbl td:first-child b{display:block;font-weight:500}
+.ntbl td:first-child span{display:block;margin-top:2px;font-size:12.5px;color:var(--fg-2)}
+.ntbl .switch{display:inline-block;vertical-align:middle}
+.tbl-wrap{overflow-x:auto}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .auth{grid-template-columns:minmax(0,1fr);gap:40px;max-width:560px;padding:32px 24px 48px}
+  .colhead{display:none}
+  .row{grid-template-columns:64px minmax(0,1fr) 18px 116px;grid-template-areas:"code body prio due" "code body status status";row-gap:6px}
+  .row .rail{display:none}
+}
+@media (max-width:880px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{display:none}
+  .menu-btn{display:inline-grid}
+  .main,.set-main{padding:16px 16px 56px}
+  h1.title{font-size:28px}
+  .set-tabs{display:flex!important}
+  .prow{grid-template-columns:minmax(0,1fr)}
+  .invite{grid-template-columns:minmax(0,1fr) auto;padding:16px}
+  .invite .btn-primary{grid-column:1 / -1}
+  .panel-h,.prow,.panel-f{padding-left:16px;padding-right:16px}
+  .linkbox{padding:0 16px 16px}
+  .tbl th,.tbl td{padding-left:16px;padding-right:16px}
+  .hide-sm{display:none}
+}
+@media (max-width:600px){
+  .auth{padding:20px 16px 40px}
+  .auth-card{padding:24px 20px}
+  .lanes{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lanes .lane:nth-child(3){display:none}
+  .key{display:none}
+  .row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"code prio" "body body" "due status";padding:14px 16px}
+  .pagehead .tools .btn-label{display:none}
+}
+.set-tabs{display:none;gap:4px;overflow-x:auto;margin:-4px -16px 8px;padding:4px 16px;scrollbar-width:none}
+.set-tabs a{flex:none;height:32px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;border:1px solid var(--line-2);font-size:13px;text-decoration:none;color:var(--fg-2)}
+.set-tabs a[aria-current="page"]{background:var(--fg);color:var(--paper);border-color:transparent}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{transition-duration:1ms!important;animation-duration:1ms!important}}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="m-t" viewBox="0 0 32 32"><path d="M5.5 9.5h21a2.5 2.5 0 0 1 2.5 2.5v1a2.5 2.5 0 0 1-2.5 2.5H19V27a2.5 2.5 0 0 1-2.5 2.5h-1A2.5 2.5 0 0 1 13 27V15.5H5.5A2.5 2.5 0 0 1 3 13v-1a2.5 2.5 0 0 1 2.5-2.5Z"/><path class="flagp" d="M20.6 3.4h5a1.9 1.9 0 0 1 1.9 1.9v3.4h-8.8V5.3a1.9 1.9 0 0 1 1.9-1.9Z"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></symbol>
+  <symbol id="i-mine" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/></symbol>
+  <symbol id="i-chev" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  <symbol id="i-folder" viewBox="0 0 24 24"><path d="M4 20h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.7-.9l-.8-1.2A2 2 0 0 0 7.9 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M9 6h12M9 12h12M9 18h12M4 6h.01M4 12h.01M4 18h.01"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16v.01"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68 1.65 1.65 0 0 0 10 3.17V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  <symbol id="i-dots" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+  <symbol id="i-sort" viewBox="0 0 24 24"><path d="M3 6h18M7 12h10M10 18h4"/></symbol>
+  <symbol id="s-todo" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/></symbol>
+  <symbol id="s-doing" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4a4 4 0 0 1 0 8z" fill="currentColor"/></symbol>
+  <symbol id="s-review" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 4a4 4 0 1 1-4 4h4z" fill="currentColor"/></symbol>
+  <symbol id="s-done" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="currentColor"/><path d="m5 8.2 2 2 4-4.2" fill="none" stroke="var(--wall)" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+
+<header class="rev">
+  <span class="rev-name">Taskora screens <small>· for review, sample data</small></span>
+  <nav class="rev-tabs" aria-label="Screens">
+    <a href="#login">Log in</a><a href="#signup">Sign up</a><span class="sep"></span>
+    <a href="#my-tasks">My tasks</a><span class="sep"></span>
+    <a href="#profile">Profile</a><a href="#notifications">Notifications</a><a href="#workspace">Workspace</a><a href="#members">Members</a>
+  </nav>
+  <button class="icon-btn" type="button" id="theme" aria-label="Switch theme"><svg class="i"><use href="#i-moon"/></svg></button>
+</header>
+
+<!-- ============ LOG IN ============ -->
+<section class="auth" data-screen="login" aria-label="Log in">
+  <div class="auth-col">
+    <a class="lockup" href="#login" aria-label="Taskora"><svg class="mark" aria-hidden="true"><use href="#m-t"/></svg><span aria-hidden="true">taskora</span></a>
+    <div class="auth-card">
+      <h1>Log in</h1>
+      <p class="lead">Pick up where your team left off.</p>
+      <form class="auth-form" id="login-form" novalidate>
+        <div class="banner" id="login-banner" role="alert"><svg class="i"><use href="#i-alert"/></svg><span>That email and password don’t match. Check both and try again, or try the demo.</span></div>
+        <div class="field" id="f-email"><label for="li-email">Email</label><input class="input" id="li-email" type="email" autocomplete="email" placeholder="you@company.com"><span class="msg">Enter your email address, like mai@northwind.example.</span></div>
+        <div class="field" id="f-pw"><div class="row2"><label for="li-pw">Password</label></div>
+          <div class="with-btn"><input class="input" id="li-pw" type="password" autocomplete="current-password"><button type="button" data-show="li-pw">Show</button></div>
+          <span class="msg">Enter your password.</span></div>
+        <button class="btn btn-primary block" type="submit">Log in</button>
+      </form>
+      <div class="or">or</div>
+      <button class="btn block demo-btn" type="button" data-demo><b>Try the demo</b><small>Sample workspace · no signup</small></button>
+    </div>
+    <p class="auth-foot">New to Taskora? <a href="#signup">Create an account</a></p>
+  </div>
+  <div class="vig" data-vignette></div>
+</section>
+
+<!-- ============ SIGN UP ============ -->
+<section class="auth" data-screen="signup" aria-label="Sign up" hidden>
+  <div class="auth-col">
+    <a class="lockup" href="#login" aria-label="Taskora"><svg class="mark" aria-hidden="true"><use href="#m-t"/></svg><span aria-hidden="true">taskora</span></a>
+    <div class="auth-card">
+      <h1>Create your account</h1>
+      <p class="lead">You’ll get a workspace with one list to start. Invite your team after.</p>
+      <form class="auth-form" id="signup-form" novalidate>
+        <div class="field" id="f-name"><label for="su-name">Your name</label><input class="input" id="su-name" autocomplete="name" placeholder="Mai Tran"><span class="msg">Enter your name so teammates know who you are.</span></div>
+        <div class="field" id="f-semail"><label for="su-email">Work email</label><input class="input" id="su-email" type="email" autocomplete="email" placeholder="you@company.com"><span class="msg">Enter an email address, like mai@northwind.example.</span></div>
+        <div class="field" id="f-spw"><label for="su-pw">Password</label>
+          <div class="with-btn"><input class="input" id="su-pw" type="password" autocomplete="new-password"><button type="button" data-show="su-pw">Show</button></div>
+          <div class="pw-meter" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span class="hint" id="pw-hint">At least 12 characters.</span><span class="msg">Use at least 12 characters.</span></div>
+        <div class="field" id="f-ws"><label for="su-ws">Workspace name</label><input class="input" id="su-ws" placeholder="Northwind Studio"><span class="hint">Usually your team or company. You can change it later.</span><span class="msg">Name your workspace.</span></div>
+        <button class="btn btn-primary block" type="submit">Create account</button>
+      </form>
+      <div class="or">or</div>
+      <button class="btn block demo-btn" type="button" data-demo><b>Look around first</b><small>Sample workspace · no signup</small></button>
+    </div>
+    <p class="auth-foot">Already have an account? <a href="#login">Log in</a></p>
+  </div>
+  <div class="vig" data-vignette></div>
+</section>
+
+<!-- ============ MY TASKS ============ -->
+<section class="app" data-screen="my-tasks" aria-label="My tasks" hidden>
+  <nav class="side" aria-label="Workspace">
+    <div class="ws"><svg class="mark" style="--flag:var(--o-mt)" aria-hidden="true"><use href="#m-t"/></svg><div><div class="ws-name">Northwind Studio</div><div class="ws-sub">5 members</div></div><span class="chip-demo">Demo</span></div>
+    <button class="search-btn" type="button"><svg class="i"><use href="#i-search"/></svg><span>Search or jump to</span><kbd>⌘K</kbd></button>
+    <a class="nav-item" href="#my-tasks"><svg class="i"><use href="#i-inbox"/></svg>Inbox<span class="badge">3</span></a>
+    <a class="nav-item" href="#my-tasks" aria-current="page"><svg class="i"><use href="#i-mine"/></svg>My tasks<span class="n">6</span></a>
+    <div class="group-label">Spaces</div>
+    <a class="nav-item" href="#my-tasks"><span class="space-mark">P</span>Product</a>
+    <div class="kids">
+      <a class="nav-item" href="#my-tasks"><svg class="i"><use href="#i-folder"/></svg>Website relaunch</a>
+      <div class="kids"><a class="nav-item" href="#my-tasks"><svg class="i"><use href="#i-list"/></svg>Sprint 14</a><a class="nav-item" href="#my-tasks"><svg class="i"><use href="#i-list"/></svg>Backlog</a></div>
+    </div>
+    <a class="nav-item" href="#my-tasks"><span class="space-mark">M</span>Marketing</a>
+    <div class="kids"><a class="nav-item" href="#my-tasks"><svg class="i"><use href="#i-list"/></svg>Launch campaign</a></div>
+    <a class="nav-item" href="#my-tasks"><span class="space-mark">O</span>Ops</a>
+    <div class="kids"><a class="nav-item" href="#my-tasks"><svg class="i"><use href="#i-list"/></svg>On-call rota</a></div>
+    <div class="side-foot">
+      <a class="nav-item" href="#profile"><svg class="i"><use href="#i-gear"/></svg>Settings</a>
+      <div class="me"><span class="av" style="--ink:var(--o-mt)">MT</span><span class="who">Mai Tran</span><button class="icon-btn" type="button" data-theme-btn aria-label="Switch theme"><svg class="i"><use href="#i-moon"/></svg></button></div>
+    </div>
+  </nav>
+  <main class="main">
+    <header class="pagehead">
+      <div>
+        <div class="crumb"><button class="icon-btn menu-btn" type="button" aria-label="Open sidebar"><svg class="i"><use href="#i-menu"/></svg></button>Northwind Studio</div>
+        <h1 class="title">My tasks</h1>
+        <p class="sub">6 open across 4 lists · Today is Sunday, Nov 15</p>
+      </div>
+      <div class="tools">
+        <div class="seg" role="group" aria-label="Show"><button type="button" aria-pressed="true">Open</button><button type="button" aria-pressed="false">Done</button></div>
+        <button class="btn btn-primary" type="button"><svg class="i"><use href="#i-plus"/></svg><span class="btn-label">New task</span><kbd>C</kbd></button>
+      </div>
+    </header>
+    <div class="colhead" aria-hidden="true"><span>Task</span><span></span><span>Nov 8 – 28</span><span>P</span><span>Due</span><span>Status</span></div>
+    <div class="groups" id="groups"></div>
+  </main>
+</section>
+
+<!-- ============ SETTINGS ============ -->
+<section class="app" data-screen="settings" aria-label="Settings" hidden>
+  <nav class="side set-nav" aria-label="Settings">
+    <div class="ws"><svg class="mark" style="--flag:var(--o-mt)" aria-hidden="true"><use href="#m-t"/></svg><div><div class="ws-name">Settings</div><div class="ws-sub">Northwind Studio</div></div></div>
+    <a class="back" href="#my-tasks"><svg class="i"><use href="#i-chev"/></svg>Back to Sprint 14</a>
+    <div class="group-label">Account</div>
+    <a class="nav-item" href="#profile" data-set="profile"><svg class="i"><use href="#i-user"/></svg>Profile</a>
+    <a class="nav-item" href="#notifications" data-set="notifications"><svg class="i"><use href="#i-bell"/></svg>Notifications</a>
+    <div class="group-label">Workspace</div>
+    <a class="nav-item" href="#workspace" data-set="workspace"><svg class="i"><use href="#i-grid"/></svg>General</a>
+    <a class="nav-item" href="#members" data-set="members"><svg class="i"><use href="#i-users"/></svg>Members<span class="n">5</span></a>
+    <div class="side-foot"><div class="me"><span class="av" style="--ink:var(--o-mt)">MT</span><span class="who">Mai Tran</span><button class="icon-btn" type="button" data-theme-btn aria-label="Switch theme"><svg class="i"><use href="#i-moon"/></svg></button></div></div>
+  </nav>
+  <main class="set-main">
+    <nav class="set-tabs" aria-label="Settings pages"><a href="#profile" data-set="profile">Profile</a><a href="#notifications" data-set="notifications">Notifications</a><a href="#workspace" data-set="workspace">General</a><a href="#members" data-set="members">Members</a></nav>
+
+    <!-- Profile -->
+    <div class="set-col" data-pane="profile">
+      <header class="pagehead"><div><div class="crumb">Settings <svg class="i"><use href="#i-chev"/></svg> Account</div><h1 class="title">Profile</h1><p class="sub">How you appear to the 4 other people in Northwind Studio.</p></div></header>
+      <form class="panel" id="profile-form">
+        <div class="panel-h"><h2>About you</h2></div>
+        <div class="prow"><div class="pl"><b>Avatar</b><span>Your initials in your ink.</span></div>
+          <div class="pc inline"><span class="av lg" style="--ink:var(--o-mt)">MT</span><span class="muted" style="font-size:13px">Initials come from your name.</span></div></div>
+        <div class="prow"><div class="pl"><b><label for="p-name">Full name</label></b></div><div class="pc"><input class="input" id="p-name" value="Mai Tran" autocomplete="name"></div></div>
+        <div class="prow"><div class="pl"><b><label for="p-email">Email</label></b><span>Used to log in and for email notifications.</span></div><div class="pc"><input class="input" id="p-email" type="email" value="mai@northwind.example" autocomplete="email"></div></div>
+        <div class="prow"><div class="pl"><b>Your ink</b><span>Each person owns one ink. It marks your cards, so no two people share one.</span></div>
+          <div class="pc"><div class="inkrow"><span class="inkchip" style="--ink:var(--o-mt)"></span><span><b style="font-weight:500">Ochre</b><br><span class="muted" style="font-size:12.5px">An admin can swap inks between people.</span></span></div>
+            <div class="team-inks" aria-label="Team inks"><span style="--ink:var(--o-jw)"><i></i>Jonas</span><span style="--ink:var(--o-pn)"><i></i>Priya</span><span style="--ink:var(--o-da)"><i></i>Diego</span><span style="--ink:var(--o-so)"><i></i>Sam</span></div></div></div>
+        <div class="prow"><div class="pl"><b>Theme</b><span>Saved on this device.</span></div>
+          <div class="pc inline"><div class="seg" role="group" aria-label="Theme" id="theme-seg"><button type="button" data-t="light">Light</button><button type="button" data-t="dark">Dark</button><button type="button" data-t="system">System</button></div></div></div>
+        <div class="panel-f"><span class="note" id="dirty-note">No unsaved changes</span><button class="btn sm" type="reset">Discard</button><button class="btn btn-primary sm" type="submit" id="p-save" disabled>Save changes</button></div>
+      </form>
+      <section class="panel">
+        <div class="panel-h"><h2>Security</h2></div>
+        <div class="prow"><div class="pl"><b>Password</b><span>Last changed Oct 2.</span></div><div class="pc inline"><button class="btn sm" type="button">Change password</button></div></div>
+        <div class="prow"><div class="pl"><b>Sessions</b><span>Logging out ends your session on this device.</span></div><div class="pc inline"><a class="btn sm" href="#login">Log out</a><button class="btn sm" type="button">Log out everywhere</button></div></div>
+      </section>
+    </div>
+
+    <!-- Notifications -->
+    <div class="set-col" data-pane="notifications" hidden>
+      <header class="pagehead"><div><div class="crumb">Settings <svg class="i"><use href="#i-chev"/></svg> Account</div><h1 class="title">Notifications</h1><p class="sub">Choose what reaches your Inbox and your email. Changes save as you go.</p></div></header>
+      <section class="panel">
+        <div class="tbl-wrap"><table class="tbl ntbl">
+          <thead><tr><th>When</th><th>Inbox</th><th>Email</th></tr></thead>
+          <tbody id="ntbl"></tbody>
+        </table></div>
+      </section>
+      <section class="panel">
+        <div class="prow"><div class="pl"><b>Daily summary</b><span>One email at 8:00 with what’s due today and what changed overnight.</span></div>
+          <div class="pc inline"><button class="switch" type="button" role="switch" aria-checked="false" aria-label="Daily summary email" data-n="Daily summary"></button></div></div>
+      </section>
+    </div>
+
+    <!-- Workspace -->
+    <div class="set-col" data-pane="workspace" hidden>
+      <header class="pagehead"><div><div class="crumb">Settings <svg class="i"><use href="#i-chev"/></svg> Workspace</div><h1 class="title">General</h1><p class="sub">Only owners and admins can change these.</p></div></header>
+      <form class="panel" onsubmit="return false">
+        <div class="panel-h"><h2>Workspace</h2></div>
+        <div class="prow"><div class="pl"><b><label for="w-name">Name</label></b><span>Shown in the sidebar and on invites.</span></div><div class="pc"><input class="input" id="w-name" value="Northwind Studio"></div></div>
+        <div class="prow"><div class="pl"><b>Icon</b><span>The first letter of the name.</span></div><div class="pc inline"><span class="space-mark" style="width:32px;height:32px;border-radius:8px;font-size:14px;background:var(--shell);color:var(--shell-fg)">N</span></div></div>
+        <div class="panel-f"><span class="note">Saved Nov 14</span><button class="btn btn-primary sm" type="submit" disabled>Save changes</button></div>
+      </form>
+      <section class="panel">
+        <div class="panel-h"><h2>Spaces and task codes</h2><p>Codes start every task in a space, like WEB-142.</p></div>
+        <div class="tbl-wrap"><table class="tbl">
+          <thead><tr><th>Space</th><th>Prefix</th><th class="hide-sm">Tasks</th></tr></thead>
+          <tbody>
+            <tr><td><span class="person"><span class="space-mark" style="background:var(--paper-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)">P</span>Product</span></td><td><input class="input pfx" value="WEB" aria-label="Product prefix" maxlength="5"></td><td class="num hide-sm">16</td></tr>
+            <tr><td><span class="person"><span class="space-mark" style="background:var(--paper-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)">M</span>Marketing</span></td><td><input class="input pfx" value="MKT" aria-label="Marketing prefix" maxlength="5"></td><td class="num hide-sm">9</td></tr>
+            <tr><td><span class="person"><span class="space-mark" style="background:var(--paper-2);color:var(--fg);box-shadow:inset 0 0 0 1px var(--line)">O</span>Ops</span></td><td><input class="input pfx" value="OPS" aria-label="Ops prefix" maxlength="5"></td><td class="num hide-sm">4</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+      <section class="panel">
+        <div class="panel-h"><h2>Delete workspace</h2></div>
+        <div class="prow"><div class="pl"><b>Delete for everyone</b><span>Removes 3 spaces, 4 lists and 29 tasks for all 5 members. This can’t be undone.</span></div>
+          <div class="pc"><div><button class="btn sm" type="button" id="del-open">Delete workspace…</button></div>
+            <div class="confirm" id="del-box" hidden>
+              <div class="field"><label for="del-in">Type <b>Northwind Studio</b> to confirm</label><input class="input" id="del-in" autocomplete="off"></div>
+              <div class="acts"><button class="btn btn-primary sm" type="button" id="del-go" disabled>Delete Northwind Studio</button><button class="btn sm" type="button" id="del-cancel">Keep it</button></div>
+            </div></div></div>
+      </section>
+    </div>
+
+    <!-- Members -->
+    <div class="set-col" data-pane="members" hidden>
+      <header class="pagehead"><div><div class="crumb">Settings <svg class="i"><use href="#i-chev"/></svg> Workspace</div><h1 class="title">Members</h1><p class="sub">5 members · 1 pending invite</p></div></header>
+      <section class="panel">
+        <div class="panel-h"><h2>Invite people</h2></div>
+        <form class="invite" id="invite-form" novalidate>
+          <input class="input" id="inv-email" type="email" placeholder="name@company.com" aria-label="Email to invite">
+          <span class="sel-wrap"><select id="inv-role" aria-label="Role"><option>Member</option><option>Admin</option></select><svg class="i"><use href="#i-chev"/></svg></span>
+          <button class="btn btn-primary" type="submit">Send invite</button>
+        </form>
+        <div class="linkbox">
+          <input class="input" id="inv-link" readonly value="taskora.app/join/northwind/k7Qm2xP9" aria-label="Invite link">
+          <button class="btn" type="button" id="copy-link"><svg class="i"><use href="#i-copy"/></svg>Copy link</button>
+          <p>Anyone with the link joins as a Member. It expires on Nov 22. <button type="button">Reset link</button></p>
+        </div>
+      </section>
+      <section class="panel">
+        <div class="panel-h"><h2>Members</h2><p>3 online</p></div>
+        <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Person</th><th>Role</th><th class="hide-sm">Last active</th><th><span class="sr">Actions</span></th></tr></thead><tbody id="mtbl"></tbody></table></div>
+      </section>
+      <section class="panel">
+        <div class="panel-h"><h2>Pending invites</h2></div>
+        <div class="tbl-wrap"><table class="tbl"><tbody id="ptbl">
+          <tr><td><span class="person"><span class="av" style="--ink:var(--line-2)">AL</span><span><b>alex@northwind.example</b><small>Invited by Mai as Member · 2 days ago</small></span></span></td><td style="text-align:right"><button class="btn sm" type="button" data-revoke>Revoke</button></td></tr>
+        </tbody></table></div>
+      </section>
+    </div>
+  </main>
+</section>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(() => {
+const $ = (s, r = document) => r.querySelector(s);
+const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const ink = k => `var(--o-${k.toLowerCase()})`;
+const PEOPLE = { MT: 'Mai Tran', JW: 'Jonas Weber', PN: 'Priya Nair', DA: 'Diego Alvarez', SO: 'Sam Okafor' };
+
+/* ---------- routing between screens ---------- */
+const SET = ['profile', 'notifications', 'workspace', 'members'];
+const SCREENS = ['login', 'signup', 'my-tasks', ...SET];
+function show() {
+  const h = location.hash.slice(1);
+  const name = SCREENS.includes(h) ? h : 'login';
+  const screen = SET.includes(name) ? 'settings' : name;
+  $$('[data-screen]').forEach(s => { s.hidden = s.dataset.screen !== screen; });
+  $$('[data-pane]').forEach(p => { p.hidden = p.dataset.pane !== name; });
+  $$('[data-set]').forEach(a => a.dataset.set === name ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  $$('.rev-tabs a').forEach(a => a.getAttribute('href') === '#' + name ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+  $('.rev-tabs a[aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  scrollTo(0, 0);
+}
+addEventListener('hashchange', show);
+
+/* ---------- theme ---------- */
+const root = document.documentElement;
+let theme = 'system';
+try { theme = localStorage.getItem('taskora-screens-theme') || 'system'; } catch (e) {}
+function isDark() { return theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches); }
+function applyTheme() {
+  if (theme === 'system') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', theme);
+  $$('#theme use, [data-theme-btn] use').forEach(u => u.setAttribute('href', isDark() ? '#i-sun' : '#i-moon'));
+  $$('#theme-seg button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === theme)));
+  try { localStorage.setItem('taskora-screens-theme', theme); } catch (e) {}
+}
+$$('#theme, [data-theme-btn]').forEach(b => b.addEventListener('click', () => { theme = isDark() ? 'light' : 'dark'; applyTheme(); }));
+$$('#theme-seg button').forEach(b => b.addEventListener('click', () => { theme = b.dataset.t; applyTheme(); }));
+
+let tt;
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2600); }
+
+/* ---------- auth vignette: the board you're about to open ---------- */
+const av = k => `<span class="av" style="--ink:${ink(k)}">${k}</span>`;
+const mc = (id, k, t, due, rail, opts = {}) => `<div class="mc${opts.done ? ' done' : ''}${opts.remote ? ' remote' : ''}" style="--ink:${ink(k)};--rink:${ink(opts.remote || k)}"><i class="flag"></i>${opts.remote ? `<span class="rtag">${PEOPLE[opts.remote].split(' ')[0]}</span>` : ''}<span class="code">WEB-${id}</span><div class="mc-t">${t}</div>${opts.done ? '' : `<div class="mrail"><b class="${opts.over ? 'over' : ''}" style="left:${rail[0]}%;width:${rail[1]}%"></b><s></s></div>`}<div class="mc-f"><span class="${opts.over ? 'late' : ''}">${due}</span>${av(k)}</div></div>`;
+const VIG = `<div class="win" aria-hidden="true"><div class="tb">${av('JW')}<b>Jonas’s screen</b><span class="r">Northwind Studio · Sprint 14</span></div>
+  <div class="mini"><div class="sb"><span class="sq">N</span><i></i><i></i><i></i></div><div class="mn">
+    <div class="top"><h3>Sprint 14</h3><div class="key">${['MT', 'JW', 'PN', 'DA', 'SO'].map(av).join('')}</div></div>
+    <div class="lanes">
+      <div class="lane"><div class="lh">To do <em>2</em></div><div class="wb">${mc(149, 'PN', 'Audit colour contrast on the pricing page', 'Nov 19', [30, 25])}${mc(150, 'MT', 'Draft release notes for v0.3', 'Nov 22', [45, 25])}</div></div>
+      <div class="lane"><div class="lh">In progress <em>2</em></div><div class="wb">${mc(142, 'MT', 'Redesign the onboarding checklist', 'Nov 18', [20, 30], { remote: 'MT' })}${mc(146, 'DA', 'Move avatars to S3 presigned uploads', 'Nov 20', [25, 35])}</div></div>
+      <div class="lane"><div class="lh">Done <em>2</em></div><div class="wb">${mc(131, 'JW', 'Invite teammates by link', 'Done Nov 12', 0, { done: true })}${mc(129, 'MT', 'Workspace switcher', 'Done Nov 11', 0, { done: true })}</div></div>
+    </div>
+    <div class="wtoast">${av('MT')}<span>Mai moved <span class="code">WEB-142</span> to In progress</span></div>
+  </div></div></div>
+  <p class="vig-cap"><span><b>Mai moved a card. Jonas sees it at once.</b> That’s the board you’re about to open.</span><span class="chip">Sample people and tasks</span></p>`;
+$$('[data-vignette]').forEach(v => { v.innerHTML = VIG; });
+
+/* ---------- auth forms ---------- */
+$$('[data-show]').forEach(b => b.addEventListener('click', () => { const i = document.getElementById(b.dataset.show); const on = i.type === 'password'; i.type = on ? 'text' : 'password'; b.textContent = on ? 'Hide' : 'Show'; }));
+const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+const setErr = (id, bad) => { $('#' + id).classList.toggle('err', bad); return bad; };
+$('#login-form').addEventListener('submit', e => {
+  e.preventDefault();
+  $('#login-banner').classList.remove('on');
+  const a = setErr('f-email', !emailOk($('#li-email').value.trim())), b = setErr('f-pw', !$('#li-pw').value);
+  if (a || b) return;
+  // In the build the mock API answers. Here any password but the sample one shows the server error.
+  if ($('#li-pw').value !== 'northwind-demo') $('#login-banner').classList.add('on');
+  else { toast('Logged in as Mai Tran'); location.hash = 'my-tasks'; }
+});
+$('#su-pw').addEventListener('input', e => {
+  const n = e.target.value.length, lvl = n >= 16 ? 3 : n >= 12 ? 2 : n > 0 ? 1 : 0;
+  $$('#f-spw .pw-meter i').forEach((i, k) => i.classList.toggle('on', k < lvl));
+  $('#pw-hint').textContent = n === 0 ? 'At least 12 characters.' : n < 12 ? `${12 - n} more character${12 - n === 1 ? '' : 's'}.` : 'Good. Longer is stronger.';
+});
+$('#signup-form').addEventListener('submit', e => {
+  e.preventDefault();
+  const bad = [setErr('f-name', !$('#su-name').value.trim()), setErr('f-semail', !emailOk($('#su-email').value.trim())), setErr('f-spw', $('#su-pw').value.length < 12), setErr('f-ws', !$('#su-ws').value.trim())];
+  if (!bad.some(Boolean)) { toast(`Created ${$('#su-ws').value.trim()}`); location.hash = 'my-tasks'; }
+});
+$$('[data-demo]').forEach(b => b.addEventListener('click', () => { toast('Opening the sample workspace as Mai'); location.hash = 'my-tasks'; }));
+
+/* ---------- my tasks ---------- */
+const TODAY = 15, WIN_START = 8, WIN_DAYS = 20;
+const ST = { todo: 'To do', doing: 'In progress', review: 'In review', done: 'Done' };
+const PRIO = ['Urgent', 'High', 'Medium', 'Low'];
+const MINE = [
+  { code: 'MKT-31', t: 'Approve the launch email copy', where: ['Marketing', 'Launch campaign'], st: 'review', p: 1, s: 9, d: 13 },
+  { code: 'OPS-12', t: 'Swap on-call with Diego for Thursday', where: ['Ops', 'On-call rota'], st: 'todo', p: 0, s: 14, d: 15 },
+  { code: 'WEB-142', t: 'Redesign the onboarding checklist', where: ['Product', 'Sprint 14'], st: 'doing', p: 1, s: 12, d: 18 },
+  { code: 'WEB-140', t: 'Notification toggles on the Settings page', where: ['Product', 'Sprint 14'], st: 'review', p: 2, s: 11, d: 18 },
+  { code: 'WEB-150', t: 'Draft release notes for v0.3', where: ['Product', 'Sprint 14'], st: 'todo', p: 3, s: 17, d: 22 },
+  { code: 'WEB-161', t: 'Plan the v0.4 roadmap session', where: ['Product', 'Backlog'], st: 'todo', p: 3, s: 24, d: 28 },
+];
+const DONE = [
+  { code: 'WEB-129', t: 'Workspace switcher', where: ['Product', 'Sprint 14'], st: 'done', p: 2, s: 4, d: 11 },
+  { code: 'MKT-27', t: 'Pick the launch date', where: ['Marketing', 'Launch campaign'], st: 'done', p: 2, s: 6, d: 10 },
+];
+function prio(p) {
+  if (p === 0) return `<span class="prio urgent" title="Urgent priority"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="1.5" width="13" height="13" rx="3.5" fill="currentColor"/><path d="M8 4.5v4.2M8 11.2v.3" stroke="var(--paper)" stroke-width="1.8" stroke-linecap="round"/></svg></span>`;
+  const bars = [10, 7, 4].map((h, i) => `<rect x="${2 + i * 4.5}" y="${13 - (3 + i * 3.5)}" width="3" height="${3 + i * 3.5}" rx="1" fill="currentColor" opacity="${i < 4 - p ? 1 : .25}"/>`).join('');
+  return `<span class="prio" title="${PRIO[p]} priority"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">${bars}</svg></span>`;
+}
+function due(x) {
+  if (x.st === 'done') return `Done Nov ${x.d}`;
+  if (x.d < TODAY) return `Overdue · Nov ${x.d}`;
+  if (x.d === TODAY) return 'Today';
+  if (x.d === TODAY + 1) return 'Tomorrow';
+  return `Nov ${x.d}`;
+}
+function row(x) {
+  const over = x.st !== 'done' && x.d < TODAY, left = (Math.max(x.s, WIN_START) - WIN_START) / WIN_DAYS * 100;
+  const w = Math.max(2, (Math.min(x.d, WIN_START + WIN_DAYS) - Math.max(x.s, WIN_START)) / WIN_DAYS * 100);
+  return `<button class="row${x.st === 'done' ? ' done' : ''}" type="button" style="--ink:var(--o-mt)" data-open="${x.code}">
+    <span class="flag" aria-hidden="true"></span><span class="code">${x.code}</span>
+    <span class="body"><span class="t">${x.t}</span><span class="where">${x.where[0]} <svg class="i"><use href="#i-chev"/></svg> ${x.where[1]}</span></span>
+    <span class="rail" title="Nov ${x.s} → Nov ${x.d}"><span class="bar${over ? ' over' : ''}" style="left:${left}%;width:${w}%"></span><span class="today" style="left:${(TODAY - WIN_START) / WIN_DAYS * 100}%"></span></span>
+    ${x.st === 'done' ? '<span class="prio"></span>' : prio(x.p)}<span class="due${over ? ' over' : ''}">${due(x)}</span>
+    <span class="st"><svg width="14" height="14" aria-hidden="true"><use href="#s-${x.st}"/></svg>${ST[x.st]}</span></button>`;
+}
+let showDone = false;
+function renderMine() {
+  const list = showDone ? DONE : MINE;
+  const groups = showDone ? [['Done this week', list]] : [
+    ['Overdue', list.filter(x => x.d < TODAY), 'over'],
+    ['Today', list.filter(x => x.d === TODAY)],
+    ['This week', list.filter(x => x.d > TODAY && x.d <= 22)],
+    ['Later', list.filter(x => x.d > 22)],
+  ];
+  $('#groups').innerHTML = groups.filter(g => g[1].length).map(([name, xs, cls]) =>
+    `<section><h2 class="grp-h"><span class="${cls || ''}">${name}</span><em>${xs.length}</em></h2><div class="rows">${xs.map(row).join('')}</div></section>`).join('');
+}
+$$('[data-screen="my-tasks"] .seg button').forEach((b, i) => b.addEventListener('click', () => {
+  showDone = i === 1; $$('[data-screen="my-tasks"] .seg button').forEach((x, j) => x.setAttribute('aria-pressed', String(j === i))); renderMine();
+}));
+$('#groups').addEventListener('click', e => { const r = e.target.closest('[data-open]'); if (r) toast(`Opens ${r.dataset.open} in the task drawer, over this list`); });
+renderMine();
+
+/* ---------- profile ---------- */
+const pf = $('#profile-form'), init = { n: $('#p-name').value, e: $('#p-email').value };
+const dirty = () => { const d = $('#p-name').value !== init.n || $('#p-email').value !== init.e; $('#p-save').disabled = !d; $('#dirty-note').textContent = d ? 'Unsaved changes' : 'No unsaved changes'; };
+pf.addEventListener('input', dirty);
+pf.addEventListener('reset', () => setTimeout(dirty));
+pf.addEventListener('submit', e => { e.preventDefault(); init.n = $('#p-name').value; init.e = $('#p-email').value; dirty(); toast('Profile saved'); });
+
+/* ---------- notifications ---------- */
+const NOTES = [
+  ['Someone @mentions me', 'In a comment or a task description.', true, true],
+  ['A task is assigned to me', 'Including tasks I’m added to as an owner.', true, true],
+  ['A task I own changes status', 'When a teammate moves it on the board.', true, false],
+  ['Someone comments on my task', 'Replies on tasks I own.', true, false],
+  ['A task I own is due tomorrow', 'Sent the evening before.', false, true],
+];
+const sw = (on, label) => `<button class="switch" type="button" role="switch" aria-checked="${on}" aria-label="${label}" data-n="${label}"></button>`;
+$('#ntbl').innerHTML = NOTES.map(([t, h, a, b]) => `<tr><td><b>${t}</b><span>${h}</span></td><td>${sw(a, t + ' in Inbox')}</td><td>${sw(b, t + ' by email')}</td></tr>`).join('');
+document.addEventListener('click', e => {
+  const s = e.target.closest('.switch'); if (!s) return;
+  const on = s.getAttribute('aria-checked') !== 'true'; s.setAttribute('aria-checked', String(on));
+  toast(`${on ? 'On' : 'Off'}: ${s.dataset.n}`);
+});
+
+/* ---------- workspace ---------- */
+$('#del-open').addEventListener('click', () => { $('#del-box').hidden = false; $('#del-open').hidden = true; $('#del-in').focus(); });
+$('#del-cancel').addEventListener('click', () => { $('#del-box').hidden = true; $('#del-open').hidden = false; $('#del-in').value = ''; $('#del-go').disabled = true; });
+$('#del-in').addEventListener('input', e => { $('#del-go').disabled = e.target.value.trim() !== 'Northwind Studio'; });
+$('#del-go').addEventListener('click', () => toast('In the demo, deleting is switched off'));
+$$('.pfx').forEach(i => i.addEventListener('change', () => toast(`New tasks will use ${i.value.toUpperCase()}-`)));
+
+/* ---------- members ---------- */
+const MEMBERS = [['MT', 'mai', 'Owner', 'Online'], ['JW', 'jonas', 'Admin', 'Online'], ['PN', 'priya', 'Member', 'Online'], ['DA', 'diego', 'Member', '2h ago'], ['SO', 'sam', 'Member', 'Yesterday']];
+const roleCell = r => r === 'Owner' ? '<span class="muted">Owner</span>' : `<span class="sel-wrap"><select aria-label="Role">${['Admin', 'Member'].map(o => `<option${o === r ? ' selected' : ''}>${o}</option>`).join('')}</select><svg class="i"><use href="#i-chev"/></svg></span>`;
+$('#mtbl').innerHTML = MEMBERS.map(([k, m, r, last]) => `<tr><td><span class="person"><span class="av" style="--ink:${ink(k)}">${k}${last === 'Online' ? '<span class="online"></span>' : ''}</span><span style="min-width:0"><b>${PEOPLE[k]}${k === 'MT' ? '<span class="chip you">You</span>' : ''}</b><small>${m}@northwind.example</small></span></span></td>
+  <td>${roleCell(r)}</td><td class="hide-sm muted">${last}</td><td style="text-align:right">${k === 'MT' ? '' : `<button class="icon-btn" type="button" aria-label="More for ${PEOPLE[k]}"><svg class="i"><use href="#i-dots"/></svg></button>`}</td></tr>`).join('');
+$('#mtbl').addEventListener('change', e => { const n = e.target.closest('tr').querySelector('b').firstChild.textContent; toast(`${n} is now ${e.target.value === 'Admin' ? 'an Admin' : 'a Member'}`); });
+$('#invite-form').addEventListener('submit', e => {
+  e.preventDefault(); const v = $('#inv-email').value.trim();
+  if (!emailOk(v)) { toast('Enter an email address to invite'); $('#inv-email').focus(); return; }
+  $('#ptbl').insertAdjacentHTML('afterbegin', `<tr><td><span class="person"><span class="av" style="--ink:var(--line-2)">${v.slice(0, 2).toUpperCase()}</span><span><b>${v.replace(/</g, '&lt;')}</b><small>Invited by Mai as ${$('#inv-role').value} · just now</small></span></span></td><td style="text-align:right"><button class="btn sm" type="button" data-revoke>Revoke</button></td></tr>`);
+  $('#inv-email').value = ''; toast(`Invite sent to ${v}`);
+});
+$('#ptbl').addEventListener('click', e => { const b = e.target.closest('[data-revoke]'); if (b) { b.closest('tr').remove(); toast('Invite revoked'); } });
+$('#copy-link').addEventListener('click', () => {
+  const v = 'https://' + $('#inv-link').value;
+  const done = () => toast('Invite link copied');
+  try { navigator.clipboard.writeText(v).then(done, () => { $('#inv-link').select(); toast('Press ⌘C to copy the selected link'); }); }
+  catch (err) { $('#inv-link').select(); toast('Press ⌘C to copy the selected link'); }
+});
+
+applyTheme(); show();
+})();
+</script>
