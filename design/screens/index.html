@@ -123,69 +123,45 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .lockup svg{width:26px;height:26px}
 .lockup span{font-weight:690;font-stretch:114%;letter-spacing:-.02em}
 
-/* ---------- auth ---------- */
-.auth{min-height:calc(100dvh - var(--rev-h));display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:72px;align-items:center;max-width:1280px;margin:0 auto;padding:40px 56px 56px}
-.auth-col{display:flex;flex-direction:column;gap:28px}
-.auth-card{background:var(--paper);border-radius:14px;padding:32px;box-shadow:var(--sh-card)}
-.auth-card h1{font:640 30px/1.15 var(--f-display);font-stretch:var(--wide);letter-spacing:-.015em;text-wrap:balance}
-.auth-card .lead{margin-top:8px;font-size:14.5px;color:var(--fg-2)}
-.auth-form{display:flex;flex-direction:column;gap:16px;margin-top:24px}
-.auth-form .row2{display:flex;justify-content:space-between;align-items:baseline}
+/* ---------- auth: one quiet card on the wall, wearing the team's five flags ---------- */
+.auth{position:relative;min-height:calc(100dvh - var(--rev-h));display:grid;grid-template-rows:auto 1fr auto;padding:0 max(16px,env(safe-area-inset-right,0px)) 0 max(16px,env(safe-area-inset-left,0px))}
+.auth::before{content:"";position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--o-mt) 0 20%,var(--o-jw) 20% 40%,var(--o-pn) 40% 60%,var(--o-da) 60% 80%,var(--o-so) 80%)}
+.auth-top{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;max-width:1200px;margin:0 auto;padding-block:28px 0}
+.auth-top p{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--fg-2)}
+.auth-mid{display:grid;place-items:center;padding-block:48px}
+.auth-card{position:relative;width:min(420px,100%);background:var(--paper);border-radius:14px;padding:36px 36px 32px;box-shadow:var(--sh-lift)}
+.team-flags{position:absolute;top:-5px;right:24px;display:flex;gap:5px}
+.team-flags i{width:20px;height:9px;border-radius:3px 3px 1px 1px;background:var(--ink)}
+.auth-card h1{font:640 28px/1.15 var(--f-display);font-stretch:var(--wide);letter-spacing:-.015em;text-wrap:balance}
+.auth-card .lead{margin-top:8px;font-size:14.5px;line-height:1.5;color:var(--fg-2)}
+.auth-form{display:flex;flex-direction:column;gap:16px;margin-top:28px}
+.auth-form .input{height:40px;font-size:14.5px}
+.auth-form .with-btn button{top:6px}
+.auth-form .btn-primary{height:42px;font-size:14.5px;margin-top:4px}
 .banner{display:none;gap:10px;padding:10px 12px;border-radius:10px;background:color-mix(in oklab,var(--danger) 9%,var(--paper));box-shadow:inset 0 0 0 1px color-mix(in oklab,var(--danger) 35%,transparent);font-size:13.5px}
 .banner.on{display:flex}
 .banner svg{color:var(--danger);margin-top:2px}
-.or{display:flex;align-items:center;gap:12px;margin:20px 0;font-size:12.5px;color:var(--fg-2)}
+.or{display:flex;align-items:center;gap:12px;margin:24px 0 16px;font-size:12.5px;color:var(--fg-3)}
 .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
-.demo-btn{flex-direction:column;gap:1px;height:auto;padding:10px 14px}
-.demo-btn b{font-weight:600;font-size:14px}
-.demo-btn small{font-size:12px;color:var(--fg-2);font-weight:400}
-.auth-foot{font-size:13.5px;color:var(--fg-2)}
-.auth-foot a{color:var(--fg);font-weight:500}
+.demo-link{display:flex;align-items:center;gap:12px;width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--line-2);text-align:left;transition:background-color var(--dur) ease,border-color var(--dur) ease}
+.demo-link:hover{background:var(--paper-2);border-color:var(--fg-3)}
+.demo-link .dots{display:flex;gap:3px}
+.demo-link .dots i{width:8px;height:8px;border-radius:2px;background:var(--ink)}
+.demo-link>span:not(.dots){flex:1;min-width:0}
+.demo-link .dots{flex:none;padding:0 4px}
+.demo-link b{display:block;font-size:14px;font-weight:600}
+.demo-link small{display:block;font-size:12.5px;color:var(--fg-2)}
+.demo-link svg{color:var(--fg-2);transition:transform var(--dur) var(--ease)}
+.demo-link:hover svg{transform:translateX(3px);color:var(--fg)}
+.auth-foot{padding-block:0 28px;text-align:center;font-size:12.5px;color:var(--fg-3)}
 .pw-meter{display:flex;gap:4px;margin-top:2px}
 .pw-meter i{flex:1;height:3px;border-radius:2px;background:var(--rail);transition:background-color var(--dur) ease}
 .pw-meter i.on{background:var(--fg)}
-
-/* the live board vignette */
-.vig{display:flex;flex-direction:column;gap:16px;min-width:0}
-.win{border-radius:14px;overflow:hidden;background:var(--wall);box-shadow:var(--sh-win)}
-.tb{height:38px;display:flex;align-items:center;gap:9px;padding:0 14px;background:var(--paper);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--fg-2)}
-.tb b{font-weight:600;color:var(--fg)}
-.tb .r{margin-left:auto}
-.mini{display:grid;grid-template-columns:44px minmax(0,1fr);min-height:400px}
-.mini .sb{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:14px;background:var(--shell)}
-.mini .sb .sq{width:24px;height:24px;margin-bottom:6px;border-radius:6px;background:var(--shell-2);box-shadow:inset 0 0 0 1px var(--shell-line);color:var(--shell-fg);font:600 11px/24px var(--f-ui);text-align:center}
-.mini .sb i{width:20px;height:5px;border-radius:3px;background:var(--shell-line)}
-.mini .mn{position:relative;padding:14px 16px 18px;min-width:0}
-.mini .top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
-.mini h3{font:640 22px/1.1 var(--f-display);font-stretch:var(--wide);letter-spacing:-.015em}
-.key{display:flex;gap:5px;padding:4px 6px;border-radius:999px;background:var(--paper);box-shadow:var(--sh-card)}
-.key .av{width:22px;height:22px;font-size:10px}
-.lanes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-.lh{display:flex;align-items:baseline;gap:6px;padding:2px 4px 8px;font-size:12.5px;font-weight:600}
-.lh em{font-style:normal;font-weight:400;color:var(--fg-2)}
-.wb{display:flex;flex-direction:column;gap:10px;padding:6px 4px}
-.mc{position:relative;padding:11px 12px 9px;border-radius:10px;background:var(--paper);box-shadow:var(--sh-card);outline:2px solid transparent;outline-offset:3px}
-.mc .flag{position:absolute;top:-4px;right:14px;width:16px;height:7px;border-radius:3px 3px 1px 1px;background:var(--ink)}
-.mc .code{display:block;margin-bottom:5px;font-size:10px}
-.mc-t{margin-bottom:9px;font-size:13px;font-weight:500;line-height:1.35;text-wrap:pretty}
-.mrail{position:relative;height:3px;margin:0 0 9px;border-radius:2px;background:var(--rail)}
-.mrail b{position:absolute;top:0;bottom:0;border-radius:2px;background:var(--rail-bar)}
-.mrail b.over{background:var(--danger)}
-.mrail s{position:absolute;top:-3px;bottom:-3px;left:35%;width:2px;margin-left:-1px;border-radius:1px;background:var(--fg)}
-.mc-f{display:flex;align-items:center;gap:8px;font-size:11.5px;color:var(--fg-2);font-variant-numeric:tabular-nums}
-.mc-f .late{color:var(--danger);font-weight:500}
-.mc-f .av{margin-left:auto;width:22px;height:22px;font-size:10px}
-.mc.done{background:color-mix(in oklab,var(--paper) 55%,var(--wall));box-shadow:none}
-.mc.done .mc-t{color:var(--fg-2);margin-bottom:6px}
-.mc.done .flag{opacity:.55}
-.mc.remote{outline-color:var(--rink)}
-.rtag{position:absolute;left:12px;top:-10px;padding:0 7px;border-radius:999px;background:var(--rink);color:var(--paper);font:500 11px/18px var(--f-ui)}
-.wtoast{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;align-items:center;gap:9px;padding:7px 14px 7px 7px;border-radius:10px;background:var(--shell);color:var(--shell-fg);font-size:12.5px;white-space:nowrap;box-shadow:0 18px 36px -18px rgba(0,0,0,.55)}
-.wtoast .code{color:var(--shell-fg);font-size:10.5px}
-.vig-cap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:13.5px;color:var(--fg-2)}
-.vig-cap b{color:var(--fg);font-weight:500}
-.vig-cap .chip{background:transparent;border-color:var(--line-2)}
-
+.you-as{display:flex;align-items:center;gap:12px;margin-top:22px;padding:12px 14px;border-radius:10px;background:var(--paper-2);border:1px solid var(--line)}
+.you-as .av{width:34px;height:34px;font-size:12px;transition:box-shadow var(--dur) var(--ease),background-color var(--dur) ease}
+.you-as b{display:block;font-size:14px;font-weight:500}
+.you-as small{display:block;font-size:12.5px;color:var(--fg-2)}
+.fine{margin-top:2px;font-size:12.5px;color:var(--fg-2)}
 /* ---------- app shell (sidebar) ---------- */
 .app{display:grid;grid-template-columns:252px minmax(0,1fr);min-height:calc(100dvh - var(--rev-h))}
 .side{position:sticky;top:calc(var(--rev-h) + env(safe-area-inset-top,0px));align-self:start;height:calc(100dvh - var(--rev-h) - env(safe-area-inset-top,0px));background:var(--shell);color:var(--shell-fg);display:flex;flex-direction:column;gap:2px;padding:14px 12px 12px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--shell-line) transparent}
@@ -300,7 +276,6 @@ h1.title{font:640 36px/1.08 var(--f-display);font-stretch:var(--wide);letter-spa
 
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
-  .auth{grid-template-columns:minmax(0,1fr);gap:40px;max-width:560px;padding:32px 24px 48px}
   .colhead{display:none}
   .row{grid-template-columns:64px minmax(0,1fr) 18px 116px;grid-template-areas:"code body prio due" "code body status status";row-gap:6px}
   .row .rail{display:none}
@@ -321,11 +296,9 @@ h1.title{font:640 36px/1.08 var(--f-display);font-stretch:var(--wide);letter-spa
   .hide-sm{display:none}
 }
 @media (max-width:600px){
-  .auth{padding:20px 16px 40px}
-  .auth-card{padding:24px 20px}
-  .lanes{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .lanes .lane:nth-child(3){display:none}
-  .key{display:none}
+  .auth-card{padding:32px 20px 24px}
+  .auth-top p span{display:none}
+  .auth-mid{padding-block:32px}
   .row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"code prio" "body body" "due status";padding:14px 16px}
   .pagehead .tools .btn-label{display:none}
 }
@@ -348,6 +321,7 @@ h1.title{font:640 36px/1.08 var(--f-display);font-stretch:var(--wide);letter-spa
   <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
   <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-alert" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4.5M12 16v.01"/></symbol>
   <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
   <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
@@ -374,52 +348,52 @@ h1.title{font:640 36px/1.08 var(--f-display);font-stretch:var(--wide);letter-spa
 
 <!-- ============ LOG IN ============ -->
 <section class="auth" data-screen="login" aria-label="Log in">
-  <div class="auth-col">
-    <a class="lockup" href="#login" aria-label="Taskora"><svg class="mark" aria-hidden="true"><use href="#m-t"/></svg><span aria-hidden="true">taskora</span></a>
+  <div class="auth-top"><a class="lockup" href="#login" aria-label="Taskora"><svg class="mark" aria-hidden="true"><use href="#m-t"/></svg><span aria-hidden="true">taskora</span></a><p><span>New to Taskora?</span><a class="btn sm" href="#signup">Sign up</a></p></div>
+  <div class="auth-mid">
     <div class="auth-card">
-      <h1>Log in</h1>
-      <p class="lead">Pick up where your team left off.</p>
+      <span class="team-flags" aria-hidden="true"><i style="--ink:var(--o-mt)"></i><i style="--ink:var(--o-jw)"></i><i style="--ink:var(--o-pn)"></i><i style="--ink:var(--o-da)"></i><i style="--ink:var(--o-so)"></i></span>
+      <h1>Log in to Taskora</h1>
+      <p class="lead">Your board is right where your team left it.</p>
       <form class="auth-form" id="login-form" novalidate>
-        <div class="banner" id="login-banner" role="alert"><svg class="i"><use href="#i-alert"/></svg><span>That email and password don’t match. Check both and try again, or try the demo.</span></div>
+        <div class="banner" id="login-banner" role="alert"><svg class="i"><use href="#i-alert"/></svg><span>That email and password don’t match. Check both and try again.</span></div>
         <div class="field" id="f-email"><label for="li-email">Email</label><input class="input" id="li-email" type="email" autocomplete="email" placeholder="you@company.com"><span class="msg">Enter your email address, like mai@northwind.example.</span></div>
-        <div class="field" id="f-pw"><div class="row2"><label for="li-pw">Password</label></div>
+        <div class="field" id="f-pw"><label for="li-pw">Password</label>
           <div class="with-btn"><input class="input" id="li-pw" type="password" autocomplete="current-password"><button type="button" data-show="li-pw">Show</button></div>
           <span class="msg">Enter your password.</span></div>
         <button class="btn btn-primary block" type="submit">Log in</button>
       </form>
       <div class="or">or</div>
-      <button class="btn block demo-btn" type="button" data-demo><b>Try the demo</b><small>Sample workspace · no signup</small></button>
+      <button class="demo-link" type="button" data-demo><span class="dots" aria-hidden="true"><i style="--ink:var(--o-mt)"></i><i style="--ink:var(--o-jw)"></i><i style="--ink:var(--o-pn)"></i></span><span><b>Try the demo workspace</b><small>Sample team and tasks · no signup</small></span><svg class="i"><use href="#i-arrow"/></svg></button>
     </div>
-    <p class="auth-foot">New to Taskora? <a href="#signup">Create an account</a></p>
   </div>
-  <div class="vig" data-vignette></div>
+  <p class="auth-foot">Taskora is a portfolio project. The demo uses sample people and tasks.</p>
 </section>
 
 <!-- ============ SIGN UP ============ -->
 <section class="auth" data-screen="signup" aria-label="Sign up" hidden>
-  <div class="auth-col">
-    <a class="lockup" href="#login" aria-label="Taskora"><svg class="mark" aria-hidden="true"><use href="#m-t"/></svg><span aria-hidden="true">taskora</span></a>
+  <div class="auth-top"><a class="lockup" href="#login" aria-label="Taskora"><svg class="mark" aria-hidden="true"><use href="#m-t"/></svg><span aria-hidden="true">taskora</span></a><p><span>Already have an account?</span><a class="btn sm" href="#login">Log in</a></p></div>
+  <div class="auth-mid">
     <div class="auth-card">
+      <span class="team-flags" aria-hidden="true"><i style="--ink:var(--o-mt)"></i><i style="--ink:var(--o-jw)"></i><i style="--ink:var(--o-pn)"></i><i style="--ink:var(--o-da)"></i><i style="--ink:var(--o-so)"></i></span>
       <h1>Create your account</h1>
-      <p class="lead">You’ll get a workspace with one list to start. Invite your team after.</p>
+      <p class="lead">Free, and ready in under a minute.</p>
+      <div class="you-as" aria-live="polite"><span class="av" id="su-av" style="--ink:var(--line-2)">?</span><span><b id="su-as">Your name</b><small>Your ink: ochre. It marks every task you own.</small></span></div>
       <form class="auth-form" id="signup-form" novalidate>
-        <div class="field" id="f-name"><label for="su-name">Your name</label><input class="input" id="su-name" autocomplete="name" placeholder="Mai Tran"><span class="msg">Enter your name so teammates know who you are.</span></div>
+        <div class="field" id="f-name"><label for="su-name">Full name</label><input class="input" id="su-name" autocomplete="name" placeholder="Mai Tran"><span class="msg">Enter your name so teammates know who you are.</span></div>
         <div class="field" id="f-semail"><label for="su-email">Work email</label><input class="input" id="su-email" type="email" autocomplete="email" placeholder="you@company.com"><span class="msg">Enter an email address, like mai@northwind.example.</span></div>
         <div class="field" id="f-spw"><label for="su-pw">Password</label>
           <div class="with-btn"><input class="input" id="su-pw" type="password" autocomplete="new-password"><button type="button" data-show="su-pw">Show</button></div>
           <div class="pw-meter" aria-hidden="true"><i></i><i></i><i></i></div>
           <span class="hint" id="pw-hint">At least 12 characters.</span><span class="msg">Use at least 12 characters.</span></div>
-        <div class="field" id="f-ws"><label for="su-ws">Workspace name</label><input class="input" id="su-ws" placeholder="Northwind Studio"><span class="hint">Usually your team or company. You can change it later.</span><span class="msg">Name your workspace.</span></div>
         <button class="btn btn-primary block" type="submit">Create account</button>
+        <p class="fine">We’ll set up a workspace for you. Invite your team once you’re in.</p>
       </form>
       <div class="or">or</div>
-      <button class="btn block demo-btn" type="button" data-demo><b>Look around first</b><small>Sample workspace · no signup</small></button>
+      <button class="demo-link" type="button" data-demo><span class="dots" aria-hidden="true"><i style="--ink:var(--o-mt)"></i><i style="--ink:var(--o-jw)"></i><i style="--ink:var(--o-pn)"></i></span><span><b>Try the demo workspace</b><small>Sample team and tasks · no signup</small></span><svg class="i"><use href="#i-arrow"/></svg></button>
     </div>
-    <p class="auth-foot">Already have an account? <a href="#login">Log in</a></p>
   </div>
-  <div class="vig" data-vignette></div>
+  <p class="auth-foot">Taskora is a portfolio project. The demo uses sample people and tasks.</p>
 </section>
-
 <!-- ============ MY TASKS ============ -->
 <section class="app" data-screen="my-tasks" aria-label="My tasks" hidden>
   <nav class="side" aria-label="Workspace">
@@ -616,22 +590,6 @@ $$('#theme-seg button').forEach(b => b.addEventListener('click', () => { theme =
 let tt;
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('show'), 2600); }
 
-/* ---------- auth vignette: the board you're about to open ---------- */
-const av = k => `<span class="av" style="--ink:${ink(k)}">${k}</span>`;
-const mc = (id, k, t, due, rail, opts = {}) => `<div class="mc${opts.done ? ' done' : ''}${opts.remote ? ' remote' : ''}" style="--ink:${ink(k)};--rink:${ink(opts.remote || k)}"><i class="flag"></i>${opts.remote ? `<span class="rtag">${PEOPLE[opts.remote].split(' ')[0]}</span>` : ''}<span class="code">WEB-${id}</span><div class="mc-t">${t}</div>${opts.done ? '' : `<div class="mrail"><b class="${opts.over ? 'over' : ''}" style="left:${rail[0]}%;width:${rail[1]}%"></b><s></s></div>`}<div class="mc-f"><span class="${opts.over ? 'late' : ''}">${due}</span>${av(k)}</div></div>`;
-const VIG = `<div class="win" aria-hidden="true"><div class="tb">${av('JW')}<b>Jonas’s screen</b><span class="r">Northwind Studio · Sprint 14</span></div>
-  <div class="mini"><div class="sb"><span class="sq">N</span><i></i><i></i><i></i></div><div class="mn">
-    <div class="top"><h3>Sprint 14</h3><div class="key">${['MT', 'JW', 'PN', 'DA', 'SO'].map(av).join('')}</div></div>
-    <div class="lanes">
-      <div class="lane"><div class="lh">To do <em>2</em></div><div class="wb">${mc(149, 'PN', 'Audit colour contrast on the pricing page', 'Nov 19', [30, 25])}${mc(150, 'MT', 'Draft release notes for v0.3', 'Nov 22', [45, 25])}</div></div>
-      <div class="lane"><div class="lh">In progress <em>2</em></div><div class="wb">${mc(142, 'MT', 'Redesign the onboarding checklist', 'Nov 18', [20, 30], { remote: 'MT' })}${mc(146, 'DA', 'Move avatars to S3 presigned uploads', 'Nov 20', [25, 35])}</div></div>
-      <div class="lane"><div class="lh">Done <em>2</em></div><div class="wb">${mc(131, 'JW', 'Invite teammates by link', 'Done Nov 12', 0, { done: true })}${mc(129, 'MT', 'Workspace switcher', 'Done Nov 11', 0, { done: true })}</div></div>
-    </div>
-    <div class="wtoast">${av('MT')}<span>Mai moved <span class="code">WEB-142</span> to In progress</span></div>
-  </div></div></div>
-  <p class="vig-cap"><span><b>Mai moved a card. Jonas sees it at once.</b> That’s the board you’re about to open.</span><span class="chip">Sample people and tasks</span></p>`;
-$$('[data-vignette]').forEach(v => { v.innerHTML = VIG; });
-
 /* ---------- auth forms ---------- */
 $$('[data-show]').forEach(b => b.addEventListener('click', () => { const i = document.getElementById(b.dataset.show); const on = i.type === 'password'; i.type = on ? 'text' : 'password'; b.textContent = on ? 'Hide' : 'Show'; }));
 const emailOk = v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -652,8 +610,14 @@ $('#su-pw').addEventListener('input', e => {
 });
 $('#signup-form').addEventListener('submit', e => {
   e.preventDefault();
-  const bad = [setErr('f-name', !$('#su-name').value.trim()), setErr('f-semail', !emailOk($('#su-email').value.trim())), setErr('f-spw', $('#su-pw').value.length < 12), setErr('f-ws', !$('#su-ws').value.trim())];
-  if (!bad.some(Boolean)) { toast(`Created ${$('#su-ws').value.trim()}`); location.hash = 'my-tasks'; }
+  const bad = [setErr('f-name', !$('#su-name').value.trim()), setErr('f-semail', !emailOk($('#su-email').value.trim())), setErr('f-spw', $('#su-pw').value.length < 12)];
+  if (!bad.some(Boolean)) { toast(`Welcome, ${$('#su-name').value.trim().split(/\s+/)[0]}`); location.hash = 'my-tasks'; }
+});
+$('#su-name').addEventListener('input', e => {
+  const v = e.target.value.trim(), parts = v.split(/\s+/).filter(Boolean);
+  const ini = parts.length ? (parts[0][0] + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase() : '?';
+  $('#su-av').textContent = ini; $('#su-av').style.setProperty('--ink', v ? 'var(--o-mt)' : 'var(--line-2)');
+  $('#su-as').textContent = v || 'Your name';
 });
 $$('[data-demo]').forEach(b => b.addEventListener('click', () => { toast('Opening the sample workspace as Mai'); location.hash = 'my-tasks'; }));
 
