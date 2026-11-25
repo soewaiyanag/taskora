@@ -50,6 +50,24 @@
         ],
         "createdAt": "2026-11-16T13:34:48.123Z",
         "reason": "Agent, 2026-11-16: static detector pairs dark-theme text with light-theme paper; rendered check of every text node in light and dark (oklab mixes resolved) found 0 below WCAG AA. Re-check by render after colour changes."
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "design/screens/index.html"
+        ],
+        "createdAt": "2026-11-24T16:59:09.570Z",
+        "reason": "Agent, 2026-11-24: static detector reads var()-coloured text as #000000; rendered check of every visible text node on all 7 screens in light and dark (oklab mixes resolved) found 0 below WCAG AA. Re-check by render after colour changes."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "design/screens/index.html"
+        ],
+        "createdAt": "2026-11-24T16:59:09.723Z",
+        "reason": "Agent, 2026-11-24: flagged .sheet rows carry their own 16-22px padding and .auth-r has 56/72px padding; verified in 1440 and 390 renders, no text is flush."
       }
     ]
   }
