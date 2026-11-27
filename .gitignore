@@ -16,3 +16,10 @@ CLAUDE.md
 # Local AI-tool hook configs (machine-specific paths)
 .codex/
 .gemini/
+
+# Local assistant launch config
+.claude/
+
+# Frontend build output
+node_modules/
+dist/
