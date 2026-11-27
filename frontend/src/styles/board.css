@@ -1,0 +1,87 @@
+/* The wall: lanes of white paper cards, the people key and the owner lens. Ported from the prototype. */
+@layer components {
+  .people{display:flex;align-items:center;gap:6px;height:44px;padding:0 6px 0 14px;background:var(--paper);border-radius:999px;box-shadow:var(--sh-card)}
+  .people-note{font-size:12.5px;color:var(--fg-2);width:196px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .people-note b{color:var(--fg);font-weight:500}
+  .people-list{display:flex;gap:4px}
+  .person{position:relative;border-radius:50%;transition:transform var(--dur) var(--ease)}
+  .person:hover,.person.on{transform:translateY(-2px)}
+  .person.on .av{box-shadow:0 0 0 2px var(--paper),0 0 0 4px var(--ink)}
+  .person .online{position:absolute;right:-1px;bottom:-1px;width:10px;height:10px;border-radius:50%;background:var(--fg);box-shadow:0 0 0 2px var(--paper)}
+  .person[aria-pressed='true']::after{content:'';position:absolute;left:50%;bottom:-6px;width:4px;height:4px;margin-left:-2px;border-radius:50%;background:var(--ink)}
+  @media (pointer:coarse){.people-list{gap:14px}.person::before{content:'';position:absolute;inset:-7px}}
+  @media (max-width:1360px){.people-note{display:none}.people{padding-left:6px}}
+
+  .board{flex:1;min-height:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(260px,1fr);gap:20px;padding:4px 32px 0;overflow-x:auto;overflow-y:hidden}
+  .lane{display:flex;flex-direction:column;min-height:0;min-width:0}
+  .lane-head{display:flex;align-items:center;gap:8px;padding:6px 6px 10px}
+  .lane-head h2{font-size:13.5px;font-weight:600}
+  .lane-head .count{font-size:13px;color:var(--fg-2);font-variant-numeric:tabular-nums;display:inline-block}
+  .lane-head .add{margin-left:auto}
+  .lane-head .add:hover{background:var(--paper)}
+  .sg{display:grid;place-items:center;color:var(--fg-2)}
+  .lane-body{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column;gap:12px;padding:8px 6px 32px;border-radius:14px;transition:background-color var(--dur) ease}
+  .lane-body.over{background:color-mix(in oklab,var(--fg) 5%,transparent)}
+  .lane-empty{padding:18px 8px;font-size:13px;color:var(--fg-2);text-align:center}
+  .drop-marker{height:3px;border-radius:2px;background:var(--fg);margin:-7px 4px;flex:none}
+
+  .card{position:relative;flex:none;background:var(--paper);border-radius:10px;padding:14px 16px 12px;box-shadow:var(--sh-card);cursor:pointer;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;outline:2px solid transparent;outline-offset:3px;transition:transform var(--dur) var(--ease),box-shadow var(--dur) var(--ease),opacity var(--dur) ease,background-color var(--dur) ease,outline-color 300ms ease}
+  .card:hover{transform:translateY(-2px);box-shadow:var(--sh-lift)}
+  .card:focus-visible{outline-offset:3px;outline-color:color-mix(in oklab,var(--fg) 50%,transparent)}
+  .card.sel{outline:2px solid var(--fg);outline-offset:3px;transform:translateY(-2px);box-shadow:var(--sh-lift)}
+  .card.dragging{opacity:.35;transform:none;box-shadow:none;cursor:grabbing}
+  .fly{z-index:25;pointer-events:none;transition:none;box-shadow:var(--sh-lift);background:var(--paper)}
+  .fly.held{box-shadow:0 4px 8px rgba(0,0,0,.08),0 28px 48px -18px rgba(0,0,0,.4)}
+  html.grabbing,html.grabbing *{cursor:grabbing!important}
+  .card.remote{outline-color:var(--rink,var(--ink))}
+  .remote-tag{position:absolute;left:14px;top:-10px;padding:0 7px;border-radius:999px;background:var(--rink,var(--ink));color:var(--paper);font:500 11px/18px var(--f-ui);animation:pop 260ms var(--ease-out);transition:opacity 300ms ease}
+  .remote-tag.out{opacity:0}
+  .card.new{animation:arrive 520ms var(--ease)}
+  .card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;padding-right:30px}
+  .card-title{font-size:15px;font-weight:500;line-height:1.38;letter-spacing:-.005em;text-wrap:pretty;margin-bottom:12px}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+  .tag{font-size:11.5px;line-height:18px;padding:0 8px;border-radius:999px;background:var(--paper-2);border:1px solid var(--line);color:var(--fg-2);transition:background-color var(--dur) ease,border-color var(--dur) ease}
+  .card .rail{margin:2px 0 12px}
+  .foot{display:flex;align-items:center;gap:12px;font-size:12.5px;color:var(--fg-2);font-variant-numeric:tabular-nums}
+  .foot .meta{display:inline-flex;align-items:center;gap:4px}
+  .foot .meta svg{width:14px;height:14px}
+  .foot .meta.complete{color:var(--fg)}
+  .due{white-space:nowrap}
+  .due.over{color:var(--danger);font-weight:500}
+  .foot .av{margin-left:auto}
+  .card.done{padding:12px 16px;background:color-mix(in oklab,var(--paper) 55%,var(--wall));box-shadow:none}
+  .card.done:hover{background:var(--paper);box-shadow:var(--sh-card)}
+  .card.done .card-title{color:var(--fg-2);margin-bottom:8px;font-size:14px}
+  .card.done .flag{opacity:.55}
+  .done-mark{display:inline-flex;align-items:center;gap:5px}
+  .dm{flex:none}
+  .dm circle{fill:currentColor}
+  .dm path{fill:none;stroke:var(--wall);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10}
+  /* landing in Done: the card sinks from lifted paper into the wall, then the check draws */
+  .card.just-done{animation:sink 560ms var(--ease-out)}
+  .card.just-done .dm path{animation:draw10 380ms 240ms var(--ease-out) both}
+
+  /* the owner lens */
+  .board.lensing .card{opacity:.36}
+  .board.lensing .card.lit{opacity:1;background:color-mix(in oklab,var(--ink) 13%,var(--paper));box-shadow:var(--sh-card),inset 0 0 0 1px color-mix(in oklab,var(--ink) 38%,transparent)}
+  .board.lensing .card.sel{opacity:1}
+  .board.lensing .card.lit .bar{background:var(--ink)}
+  .board.lensing .card.lit .tag{background:color-mix(in oklab,var(--ink) 10%,var(--paper));border-color:color-mix(in oklab,var(--ink) 30%,transparent)}
+
+  .composer{flex:none;background:var(--paper);border-radius:10px;padding:12px 14px;box-shadow:var(--sh-lift),inset 0 0 0 1.5px var(--fg);animation:composer-in 220ms var(--ease-out)}
+  .composer input{width:100%;border:0;outline:0;background:transparent;font-size:15px;font-weight:500;padding:2px 0 10px}
+  .composer-foot{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--fg-2);white-space:nowrap}
+
+  .board-state{display:grid;place-items:center;flex:1;padding:48px 32px;color:var(--fg-2);font-size:14px;text-align:center}
+  .board-state .btn{margin-top:12px}
+
+  @media (max-width:880px){
+    .people-note{display:none}
+    .people{padding-left:6px}
+    .board{grid-auto-columns:84vw;gap:12px;padding:4px 16px 0;scroll-snap-type:x mandatory}
+    .lane{scroll-snap-align:start}
+  }
+}
+@keyframes arrive{from{transform:translateY(-8px) scale(.98);box-shadow:var(--sh-lift)}}
+@keyframes sink{from{background:var(--paper);box-shadow:var(--sh-lift);transform:translateY(-2px)}}
+@keyframes composer-in{from{opacity:0;transform:translateY(-6px)}}

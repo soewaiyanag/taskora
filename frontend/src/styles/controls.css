@@ -1,0 +1,436 @@
+@layer components {
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1px solid var(--line-2);
+    background: var(--paper);
+    font-weight: 500;
+    font-size: 13.5px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: background-color var(--dur) ease;
+  }
+  .btn:hover:not(:disabled) {
+    background: var(--paper-2);
+  }
+  .btn:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: var(--on-primary);
+    border-color: transparent;
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: color-mix(in oklab, var(--primary) 86%, var(--wall));
+  }
+  .btn-primary kbd {
+    background: transparent;
+    border-color: color-mix(in oklab, var(--on-primary) 30%, transparent);
+    color: inherit;
+    opacity: 0.8;
+  }
+  .btn.sm {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+  .btn.block {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+  }
+  .btn .soon {
+    margin-left: 2px;
+    border-color: var(--line);
+    color: var(--fg-3);
+  }
+  .icon-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    color: var(--fg-2);
+  }
+  .icon-btn:hover {
+    background: var(--paper-2);
+    color: var(--fg);
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .field label {
+    font-size: 13px;
+    font-weight: 500;
+  }
+  .field .hint {
+    font-size: 12.5px;
+    color: var(--fg-2);
+  }
+  .input {
+    width: 100%;
+    height: 36px;
+    padding: 0 11px;
+    border-radius: 8px;
+    border: 1px solid var(--line-2);
+    background: var(--paper);
+    font-size: 14px;
+  }
+  .input:focus {
+    outline: 2px solid var(--fg);
+    outline-offset: 1px;
+  }
+  .input::placeholder {
+    color: var(--fg-3);
+  }
+  .field.err .input {
+    border-color: var(--danger);
+  }
+  .field .msg {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    color: var(--danger);
+  }
+  .field .msg svg {
+    width: 14px;
+    height: 14px;
+  }
+  .with-btn {
+    position: relative;
+  }
+  .with-btn .input {
+    padding-right: 64px;
+  }
+  .with-btn button {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--fg-2);
+  }
+  .with-btn button:hover {
+    background: var(--paper-2);
+    color: var(--fg);
+  }
+
+  .sel-wrap {
+    position: relative;
+    display: inline-flex;
+  }
+  .sel-wrap select {
+    appearance: none;
+    height: 32px;
+    padding: 0 30px 0 10px;
+    border-radius: 8px;
+    border: 1px solid var(--line-2);
+    background: var(--paper);
+    font-size: 13.5px;
+    cursor: pointer;
+  }
+  .sel-wrap select:hover {
+    background: var(--paper-2);
+  }
+  .sel-wrap svg {
+    position: absolute;
+    right: 9px;
+    top: 50%;
+    margin-top: -7px;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+    transform: rotate(90deg);
+    color: var(--fg-2);
+  }
+
+  .av {
+    position: relative;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    flex: none;
+    font: 600 11px/1 var(--f-ui);
+    letter-spacing: 0.01em;
+    background: color-mix(in oklab, var(--ink) 18%, var(--paper));
+    color: var(--fg);
+    box-shadow: 0 0 0 1.5px var(--ink);
+    transition: box-shadow var(--dur) var(--ease);
+  }
+  .av.lg {
+    width: 30px;
+    height: 30px;
+  }
+  .av.sm {
+    width: 24px;
+    height: 24px;
+  }
+  .av.ghost {
+    background: transparent;
+    box-shadow: inset 0 0 0 1.5px var(--line-2);
+    color: var(--fg-3);
+  }
+  .av .online,
+  .av .dot {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--fg);
+    box-shadow: 0 0 0 2px var(--paper);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    height: 20px;
+    padding: 0 8px;
+    border-radius: 999px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    font-size: 11.5px;
+    color: var(--fg-2);
+    white-space: nowrap;
+  }
+  .seg {
+    display: inline-flex;
+    padding: 3px;
+    gap: 2px;
+    border-radius: 9px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+  }
+  .seg button {
+    height: 28px;
+    padding: 0 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: var(--fg-2);
+  }
+  .seg button[aria-pressed='true'] {
+    background: var(--paper);
+    color: var(--fg);
+    font-weight: 500;
+    box-shadow: var(--sh-card);
+  }
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 22px;
+    flex: none;
+    border-radius: 999px;
+    background: var(--line-2);
+    vertical-align: middle;
+    transition: background-color var(--dur) ease;
+  }
+  .switch::after {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--paper);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    transition: transform var(--dur) var(--ease);
+  }
+  .switch[aria-checked='true'] {
+    background: var(--fg);
+  }
+  .switch[aria-checked='true']::after {
+    transform: translateX(14px);
+  }
+  @media (pointer: coarse) {
+    .switch::before {
+      content: '';
+      position: absolute;
+      inset: -11px -4px;
+    }
+  }
+
+  .prio {
+    display: inline-flex;
+    color: var(--fg-3);
+  }
+  .prio.urgent {
+    color: var(--danger);
+  }
+  .mark {
+    fill: currentColor;
+  }
+  .lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 21px;
+    line-height: 1;
+    text-decoration: none;
+    color: var(--fg);
+  }
+  .lockup svg {
+    width: 26px;
+    height: 26px;
+  }
+  .lockup span {
+    font-weight: 690;
+    font-stretch: 114%;
+    letter-spacing: -0.02em;
+  }
+  .flag {
+    position: absolute;
+    top: -5px;
+    right: 18px;
+    width: 20px;
+    height: 9px;
+    border-radius: 3px 3px 1px 1px;
+    background: var(--ink);
+  }
+  .rail {
+    display: block;
+    position: relative;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--rail);
+  }
+  .rail .bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-radius: 2px;
+    background: var(--rail-bar);
+    transition: background-color var(--dur) ease;
+  }
+  .rail .bar.over {
+    background: var(--danger);
+  }
+  .rail .today {
+    position: absolute;
+    top: -4px;
+    bottom: -4px;
+    width: 2px;
+    margin-left: -1px;
+    border-radius: 1px;
+    background: var(--fg);
+  }
+
+  .toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 12px 10px 16px;
+    border-radius: 10px;
+    background: var(--toast-bg);
+    color: var(--toast-fg);
+    font-size: 13.5px;
+    box-shadow: 0 18px 40px -16px rgba(0, 0, 0, 0.45);
+    transform: translate(-50%, 16px);
+    opacity: 0;
+    transition:
+      transform 300ms var(--ease),
+      opacity 200ms ease;
+    max-width: calc(100% - 32px);
+    pointer-events: none;
+  }
+  .toast.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .toast.nudge {
+    animation: nudge 280ms var(--ease);
+  }
+  .toast button {
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 6px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .toast kbd {
+    margin-left: 6px;
+    background: transparent;
+    border-color: color-mix(in oklab, var(--toast-fg) 30%, transparent);
+    color: inherit;
+    display: inline-block;
+  }
+  .toast :focus-visible {
+    outline-color: var(--toast-fg);
+  }
+}
+@keyframes nudge {
+  40% {
+    transform: translate(-50%, -4px);
+  }
+}
+@keyframes pop {
+  from {
+    transform: translateY(6px) scale(0.985);
+    opacity: 0;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+@keyframes fill {
+  from {
+    transform: scaleX(0);
+  }
+}
+@keyframes draw14 {
+  from {
+    stroke-dashoffset: 14;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes draw10 {
+  from {
+    stroke-dashoffset: 10;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes tick-pop {
+  45% {
+    transform: scale(1.18);
+  }
+}
+@keyframes bump {
+  40% {
+    transform: translateY(-3px);
+  }
+}
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}

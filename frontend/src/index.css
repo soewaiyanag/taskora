@@ -1,0 +1,8 @@
+@import 'tailwindcss';
+@import './styles/tokens.css';
+@import './styles/base.css';
+@import './styles/controls.css';
+@import './styles/shell.css';
+@import './styles/board.css';
+@import './styles/overlays.css';
+@import './styles/pages.css';

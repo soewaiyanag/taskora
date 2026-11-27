@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/styles/overlays.css"
+        ],
+        "createdAt": "2026-11-26T18:04:40.478Z",
+        "reason": "DESIGN.md Task Drawer + approved prototype: the 3px ink band runs along the top of a full-height square drawer, not a side bar on a rounded card"
+      }
+    ]
+  }
+}

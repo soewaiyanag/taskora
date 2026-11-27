@@ -68,6 +68,15 @@
         ],
         "createdAt": "2026-11-24T16:59:09.723Z",
         "reason": "Agent, 2026-11-24: flagged .sheet rows carry their own 16-22px padding and .auth-r has 56/72px padding; verified in 1440 and 390 renders, no text is flush."
+      },
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "frontend/src/styles/overlays.css"
+        ],
+        "createdAt": "2026-11-26T15:42:24.304Z",
+        "reason": "DESIGN.md Task Drawer + approved prototype: full-height, square-cornered drawer whose 3px ink band runs along the top edge and hairline on the left is its edge against the board, not an accent bar on a rounded card"
       }
     ]
   }

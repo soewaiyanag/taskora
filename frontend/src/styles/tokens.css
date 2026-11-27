@@ -1,0 +1,138 @@
+/* DESIGN.md tokens. Raw values live in @theme (they also become Tailwind utilities);
+   the semantic names below are what components use, and dark mode swaps only those. */
+@theme static {
+  --color-n0: #ffffff;
+  --color-n1: #f6f7f5;
+  --color-n2: #ecedea;
+  --color-n3: #e0e2de;
+  --color-n4: #cfd2cd;
+  --color-n5: #b1b6b0;
+  --color-n6: #8e948d;
+  --color-n7: #646a63;
+  --color-n8: #555b54;
+  --color-n9: #353a35;
+  --color-n10: #1a1e1b;
+
+  --color-ink-ochre: #b8862b;
+  --color-ink-harbour: #46698f;
+  --color-ink-rosewood: #a4505e;
+  --color-ink-sage: #5f8a5b;
+  --color-ink-teal: #3c8580;
+
+  --font-ui: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Archivo', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --radius-xs: 4px;
+  --radius-sm: 7px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+
+  --ease-settle: cubic-bezier(0.34, 1.32, 0.64, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-carry: cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+:root {
+  --wall: var(--color-n2);
+  --paper: var(--color-n0);
+  --paper-2: var(--color-n1);
+  --line: var(--color-n3);
+  --line-2: var(--color-n4);
+  --fg: var(--color-n10);
+  --fg-2: var(--color-n8);
+  --fg-3: var(--color-n7);
+  --rail: var(--color-n4);
+  --rail-bar: var(--color-n6);
+  --shell: #1b201d;
+  --shell-2: #262c28;
+  --shell-line: #323934;
+  --shell-fg: #e9ece8;
+  --shell-mut: #a9b0aa;
+  --primary: var(--color-n10);
+  --on-primary: #ffffff;
+  --danger: #b5412c;
+  --toast-bg: #1b201d;
+  --toast-fg: #e9ece8;
+  --scrim: rgba(26, 30, 27, 0.28);
+  --o-ochre: var(--color-ink-ochre);
+  --o-harbour: var(--color-ink-harbour);
+  --o-rosewood: var(--color-ink-rosewood);
+  --o-sage: var(--color-ink-sage);
+  --o-teal: var(--color-ink-teal);
+  --sh-card: 0 1px 2px rgba(26, 30, 27, 0.06), 0 4px 12px -6px rgba(26, 30, 27, 0.14);
+  --sh-lift: 0 2px 4px rgba(26, 30, 27, 0.06), 0 16px 32px -14px rgba(26, 30, 27, 0.3);
+  --sh-drawer: -1px 0 0 var(--line), -32px 0 64px -32px rgba(26, 30, 27, 0.28);
+  --f-ui: var(--font-ui);
+  --f-display: var(--font-display);
+  --f-mono: var(--font-mono);
+  --wide: 116%;
+  --ease: var(--ease-settle);
+  --dur: 220ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --wall: #141715;
+    --paper: #1d211e;
+    --paper-2: #242925;
+    --line: #2e342f;
+    --line-2: #3b423c;
+    --fg: #e8ebe7;
+    --fg-2: #b4bab3;
+    --fg-3: #959c94;
+    --rail: #343a35;
+    --rail-bar: #7d847c;
+    --shell: #0d0f0e;
+    --shell-2: #1a1e1b;
+    --shell-line: #262c28;
+    --shell-mut: #a2a9a3;
+    --primary: #e8ebe7;
+    --on-primary: #141715;
+    --danger: #e07a63;
+    --toast-bg: #e8ebe7;
+    --toast-fg: #141715;
+    --scrim: rgba(0, 0, 0, 0.5);
+    --o-ochre: #d9a84a;
+    --o-harbour: #7fa2c9;
+    --o-rosewood: #cc7f8c;
+    --o-sage: #8db889;
+    --o-teal: #6bb5ae;
+    --sh-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px -6px rgba(0, 0, 0, 0.5);
+    --sh-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 32px -14px rgba(0, 0, 0, 0.7);
+    --sh-drawer: -1px 0 0 var(--line), -32px 0 64px -32px rgba(0, 0, 0, 0.7);
+    color-scheme: dark;
+  }
+}
+:root[data-theme='dark'] {
+  --wall: #141715;
+  --paper: #1d211e;
+  --paper-2: #242925;
+  --line: #2e342f;
+  --line-2: #3b423c;
+  --fg: #e8ebe7;
+  --fg-2: #b4bab3;
+  --fg-3: #959c94;
+  --rail: #343a35;
+  --rail-bar: #7d847c;
+  --shell: #0d0f0e;
+  --shell-2: #1a1e1b;
+  --shell-line: #262c28;
+  --shell-mut: #a2a9a3;
+  --primary: #e8ebe7;
+  --on-primary: #141715;
+  --danger: #e07a63;
+  --toast-bg: #e8ebe7;
+  --toast-fg: #141715;
+  --scrim: rgba(0, 0, 0, 0.5);
+  --o-ochre: #d9a84a;
+  --o-harbour: #7fa2c9;
+  --o-rosewood: #cc7f8c;
+  --o-sage: #8db889;
+  --o-teal: #6bb5ae;
+  --sh-card: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px -6px rgba(0, 0, 0, 0.5);
+  --sh-lift: 0 2px 4px rgba(0, 0, 0, 0.4), 0 16px 32px -14px rgba(0, 0, 0, 0.7);
+  --sh-drawer: -1px 0 0 var(--line), -32px 0 64px -32px rgba(0, 0, 0, 0.7);
+  color-scheme: dark;
+}
