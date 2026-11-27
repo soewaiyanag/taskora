@@ -92,7 +92,8 @@ Errors use RFC 9457 `application/problem+json`; lists use cursor pagination.
 - **API client:** orval generates typed TanStack Query hooks and request types from the Go OpenAPI spec (`frontend/src/api/generated/`, never edited by hand). Until 6.4, a small hand-written client covers the same endpoints.
 - **URL as state:** the open task (`?task=WEB-142`), filters, sort, group-by and the owner lens live in typed search params, so every view is a shareable link.
 - **UI state:** Zustand for what the server doesn't own (sidebar, theme, pending composer).
-- **UI:** Tailwind v4 with the `DESIGN.md` tokens in `@theme`; shadcn/ui (Radix) primitives; Lucide icons; `dnd-kit` for drag with keyboard support and screen-reader announcements; `cmdk` for the ⌘K palette; Tiptap; React Hook Form + zod for forms; Motion for the one motion style in `DESIGN.md`; TanStack Virtual for long lanes.
+- **UI:** Tailwind v4 with the `DESIGN.md` tokens in `@theme`; component styles ported from the prototype; Lucide icons; drag, the ⌘K palette and motion are the prototype's own, ported to React (pointer drag with a long press on touch, ⇧←/→ moves from the keyboard, Web Animations for the one motion style in `DESIGN.md`); React Hook Form + zod for forms, with the same zod schemas validating the mock API. Tiptap and TanStack Virtual arrive with the features that need them.
+- **Mock API:** until the Go API is reachable, MSW (`src/mocks/`) serves `/api/v1` from the Northwind demo data, saved in localStorage.
 - **Real-time:** WebSocket events update the TanStack Query cache directly (`setQueryData`), so another person's move appears without refetching.
 - **Folders:** by feature, `src/features/{auth,workspaces,board,tasks,comments,search}/` with `api/`, `components/` and `hooks/` inside each; shared UI in `src/components/ui/`.
 - **Tests:** Vitest + React Testing Library + MSW (mocked API) for components and hooks; Playwright e2e with axe accessibility checks.

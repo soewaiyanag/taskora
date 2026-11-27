@@ -52,10 +52,10 @@ Later phases are coarse on purpose and get split into micro-steps when we reach 
 ### Phase 0: Foundations
 - [x] 0.1 Plan files (`PROGRESS.md`, `docs/ARCHITECTURE.md`, `README.md`, `.gitignore`), `git init`, create the GitHub repo
 - [x] 0.2 Design: `PRODUCT.md`, visual direction, clickable prototype (`design/prototype/`), `DESIGN.md` (approved 2026-11-15)
-- [ ] 0.3 Scaffold `frontend/` with Vite (React + TypeScript, strict mode), TanStack Router, ESLint, Prettier, Vitest
-- [ ] 0.4 Tailwind CSS v4 with the `DESIGN.md` tokens in `@theme`
-- [ ] 0.5 shadcn/ui setup + Lucide icons
-- [ ] 0.6 `frontend-ci.yml`: lint, type-check, test, build
+- [x] 0.3 Scaffold `frontend/` with Vite (React + TypeScript, strict mode), TanStack Router, ESLint, Prettier, Vitest
+- [x] 0.4 Tailwind CSS v4 with the `DESIGN.md` tokens in `@theme`
+- [x] 0.5 ~~shadcn/ui setup~~ (dropped, see Decisions 2026-11-26) + Lucide icons
+- [x] 0.6 `frontend-ci.yml`: lint, type-check, test, build
 - [ ] 0.7 Phase 0 quiz
 
 ### Phase 1: Go API skeleton + auth
@@ -171,3 +171,7 @@ Later phases are coarse on purpose and get split into micro-steps when we reach 
 | 2026-11-15 | End-to-end types: Go → OpenAPI → orval → typed hooks | One source of truth; a renamed field breaks the build instead of production |
 | 2026-11-15 | ~~Time budget 1 hour a day~~ → **2 hours a day** | My actual available time; about 3 months in total |
 | 2026-11-15 | Kept Go over NestJS for the backend | The portfolio already has a NestJS backend (snipsh); two ecosystems show more range |
+| 2026-11-26 | Frontend first build runs on a mock API (MSW) seeded with the Northwind demo, saved in localStorage | The screens work end to end before the Go API exists; switch off with `VITE_API_MOCK=off` |
+| 2026-11-26 | ~~I write the TanStack Query steps 1.21, 1.22, 3.4~~ → Claude built the Query layer with the first frontend build | Approved build plan (handoff, 2026-11-24); the steps stay in the plan as reading and review |
+| 2026-11-26 | ~~dnd-kit, cmdk, shadcn/ui, Motion~~ → the prototype's own drag, palette and motion, ported to React | Keeps the approved feel (lift, lean, flight, glide); keyboard moves (⇧←/→) cover what dnd-kit's sensor would. Revisit if a feature needs a primitive |
+| 2026-11-26 | TypeScript pinned to 6.0 | typescript-eslint does not support TypeScript 7 yet |
